@@ -16,7 +16,7 @@ try:
 except ImportError:
     from yaml import Loader
 
-import misc
+from .misc import test_environment
 
 app = typer.Typer(
     name="jedhacli",
@@ -39,7 +39,7 @@ A CLI to manage the labs for Cybersecurity Bootcamp at Jedha (https://jedha.co).
 ⠀⠀⠀⠀⠈⠙⠛⠿⠿⠿⠇⠀⠉⠁⠀⠀⠀⠀⠀\n
     """,
     epilog="Made with ❤️ by the Jedha Bootcamp Team",
-    callback=misc.test_environment_decorator,
+    callback=test_environment,
 )
 
 console = Console()
@@ -96,7 +96,6 @@ def start(labname: str):
     Args:
         labname (str): Name of the lab.
     """
-    # lab_config_file = misc.get_lab_config_file(labname)
     lab_config_file = f"labs/{labname}.yaml"
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
@@ -129,7 +128,6 @@ def restart(labname: str):
     Args:
         labname (str): Name of the lab.
     """
-    # lab_config_file = misc.get_lab_config_file(labname)
     lab_config_file = f"labs/{labname}.yaml"
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
@@ -160,7 +158,6 @@ def stop(
     Args:
         labname (str): Name of the lab.
     """
-    # lab_config_file = misc.get_lab_config_file(labname)
     lab_config_file = f"labs/{labname}.yaml"
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
@@ -181,5 +178,9 @@ def stop(
         print("Aborting.")
 
 
-if __name__ == "__main__":
+def main():
     app()
+
+
+if __name__ == "__main__":
+    main()

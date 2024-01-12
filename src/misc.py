@@ -34,7 +34,7 @@ def run_command(command: List[str]) -> bool:
         return False
 
 
-def test_environment_decorator():
+def test_environment():
     """
     Check if Docker and Docker-Compose are installed on the machine.
     """
