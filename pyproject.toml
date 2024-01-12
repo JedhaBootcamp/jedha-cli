@@ -2,7 +2,6 @@
 name = "jedha-cli"
 version = "1.0.0"
 description = "A CLI to start cybersecurity labs and practice your skills"
-tags = ["cybersecurity", "pentest", "ctf", "labs", "cli"]
 authors = ["ademenet <alain@jedha.co>"]
 readme = "README.md"
 packages = [
