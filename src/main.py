@@ -5,6 +5,7 @@ import platform
 import subprocess
 from typing import Annotated, List
 
+import pkg_resources
 import typer
 from rich import print
 from rich.console import Console
@@ -16,7 +17,7 @@ try:
 except ImportError:
     from yaml import Loader
 
-from .misc import test_environment
+from .misc import get_lab_config_file, test_environment
 
 app = typer.Typer(
     name="jedhacli",
@@ -58,7 +59,8 @@ def list() -> List[str]:
     """
     List all the labs available.
     """
-    with open("labs.yaml", "r") as f:
+    labs_yaml_file = pkg_resources.resource_filename("src", "labs.yaml")
+    with open(labs_yaml_file, "r") as f:
         filename_array = load(f, Loader=Loader)
 
     table = Table("Name", "Description")
@@ -72,7 +74,7 @@ def status(labname: str):
     """
     Show the running labs.
     """
-    lab_config_file = f"labs/{labname}.yaml"
+    lab_config_file = get_lab_config_file(labname)
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
         return
@@ -96,7 +98,7 @@ def start(labname: str):
     Args:
         labname (str): Name of the lab.
     """
-    lab_config_file = f"labs/{labname}.yaml"
+    lab_config_file = get_lab_config_file(labname)
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
         return
@@ -128,7 +130,7 @@ def restart(labname: str):
     Args:
         labname (str): Name of the lab.
     """
-    lab_config_file = f"labs/{labname}.yaml"
+    lab_config_file = get_lab_config_file(labname)
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
         return
@@ -158,7 +160,7 @@ def stop(
     Args:
         labname (str): Name of the lab.
     """
-    lab_config_file = f"labs/{labname}.yaml"
+    lab_config_file = get_lab_config_file(labname)
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
         return

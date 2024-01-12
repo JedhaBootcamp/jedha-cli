@@ -13,7 +13,7 @@ def get_lab_config_file(labname: str) -> str:
     Returns:
         str: The content of the lab's Docker Compose configuration file.
     """
-    return pkg_resources.resource_filename("jedhacli", f"labs/{labname}.yaml")
+    return pkg_resources.resource_filename("src", f"labs/{labname}.yaml")
 
 
 def run_command(command: List[str]) -> bool:
