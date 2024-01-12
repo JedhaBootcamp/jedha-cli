@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  m03-d01-tomcat:
+    container_name: m03-d01-tomcat
+    image: jedha/lab-tomcat
+    expose:
+      - "8080"
+    networks:
+      m03-network:
+        ipv4_address: 10.10.3.11
+
+networks:
+  m03-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24

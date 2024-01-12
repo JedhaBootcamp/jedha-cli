@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  m03-d14-aircrack:
+    container_name: m03-d14-aircrack
+    image: jedha/lab-aircrack
+    hostname: wifi-pineapple
+    networks:
+      m03-network:
+        ipv4_address: 10.10.3.47
+
+networks:
+  m03-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.3.0/24

@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  m03-d06-little-misconfiguration:
+    container_name: m03-d06-little-misconfiguration
+    image: jedha/lab-little-misconfiguration
+    hostname: jedha-bootcamp
+    expose:
+      - 80
+    networks:
+      m03-network:
+        ipv4_address: 10.10.3.23
+
+networks:
+  m03-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24

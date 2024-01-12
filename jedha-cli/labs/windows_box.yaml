@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  m03-d09-windows-box:
+    container_name: m03-d09-windows-box
+    image: jedha/lab-windows-box
+    hostname: DESKTOP-DK6OEO9
+    sysctls:
+      - net.ipv4.icmp_echo_ignore_all=1
+    networks:
+      m03-network:
+        ipv4_address: 10.10.3.4
+
+networks:
+  m03-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.3.0/24
