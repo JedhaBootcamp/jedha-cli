@@ -1,8 +1,18 @@
+import platform
 import subprocess
 from typing import List
 
 import pkg_resources
 import typer
+
+
+def get_docker_command(command):
+    """
+    Manage the Docker command depending on the OS.
+    """
+    if platform.system() != "Darwin":
+        command.insert(0, "sudo")
+    return command
 
 
 def get_lab_config_file(labname: str) -> str:

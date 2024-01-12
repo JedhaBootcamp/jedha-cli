@@ -17,7 +17,7 @@ try:
 except ImportError:
     from yaml import Loader
 
-from .misc import get_lab_config_file, test_environment
+from .misc import get_docker_command, get_lab_config_file, test_environment
 
 app = typer.Typer(
     name="jedhacli",
@@ -80,8 +80,11 @@ def status(labname: str):
         return
 
     try:
+        command = get_docker_command(
+            ["docker", "compose", "--file", lab_config_file, "ps"]
+        )
         subprocess.run(
-            ["sudo", "docker", "compose", "--file", lab_config_file, "ps"],
+            command,
             check=True,
         )
     except subprocess.CalledProcessError as e:
@@ -104,15 +107,15 @@ def start(labname: str):
         return
 
     try:
-        command = ["sudo", "docker", "compose", "--file", lab_config_file, "up", "-d"]
-        if platform.system() == "Darwin":
-            command = ["docker", "compose", "--file", lab_config_file, "up", "-d"]
+        command = get_docker_command(
+            ["docker", "compose", "--file", lab_config_file, "up", "-d"]
+        )
         subprocess.run(
             command,
             check=True,
         )
         subprocess.run(
-            ["sudo", "docker", "compose", "--file", lab_config_file, "up", "-d"],
+            ["docker", "compose", "--file", lab_config_file, "up", "-d"],
             check=True,
         )
         print(f"Lab {labname} started successfully.")
@@ -136,8 +139,11 @@ def restart(labname: str):
         return
 
     try:
+        command = get_docker_command(
+            ["docker", "compose", "--file", lab_config_file, "restart"]
+        )
         subprocess.run(
-            ["sudo", "docker", "compose", "--file", lab_config_file, "restart"],
+            command,
             check=True,
         )
         print(f"Lab {labname} restarted successfully.")
@@ -167,8 +173,11 @@ def stop(
 
     if force:
         try:
+            command = get_docker_command(
+                ["docker", "compose", "--file", lab_config_file, "down"]
+            )
             subprocess.run(
-                ["sudo", "docker", "compose", "--file", lab_config_file, "down"],
+                command,
                 check=True,
             )
             print(f"Lab {labname} taken down successfully.")
