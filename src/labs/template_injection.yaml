@@ -1,29 +1,29 @@
 version: "3"
 
 services:
-  m03-d04-ssti-java-thymeleaf:
-    container_name: m03-d04-ssti-java-thymeleaf
+  ssti-java-thymeleaf:
+    container_name: ssti-java-thymeleaf
     image: jedha/lab-ssti-java-thymeleaf
     hostname: jedha-bootcamp
     expose:
       - 80
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.16
 
-  m03-d04-ssti-python-jinja2:
-    container_name: m03-d04-ssti-python-jinja2
+  ssti-python-jinja2:
+    container_name: ssti-python-jinja2
     image: jedha/lab-ssti-python-jinja2
     hostname: jedha-bootcamp
     expose:
       - 80
     entrypoint: python3 /root/server.py
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.17
 
 networks:
-  m03-network:
+  lab-network:
     driver: bridge
     ipam:
       driver: default

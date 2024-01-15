@@ -1,17 +1,17 @@
 version: "3"
 
 services:
-  m03-d01-tomcat:
-    container_name: m03-d01-tomcat
+  tomcat:
+    container_name: tomcat
     image: jedha/lab-tomcat
     expose:
       - "8080"
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.11
 
 networks:
-  m03-network:
+  lab-network:
     driver: bridge
     ipam:
       driver: default

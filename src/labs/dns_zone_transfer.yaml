@@ -1,21 +1,21 @@
 version: "3"
 
 services:
-  m03-d02-dns-zone-transfer:
+  dns-zone-transfer:
     # DNS ZONE TRANSFER
     # https://github.com/vulhub/vulhub/blob/master/dns/dns-zone-transfer/README.md
     # TODO: revoir les zone transfer, les ips ont juste un .30 au lieu de .3
     image: jedha/lab-dns-zone-transfer
-    container_name: m03-d02-dns-zone-transfer
+    container_name: dns-zone-transfer
     hostname: jedha-dns-lab1
     environment:
       - CONFIG=allowtransfer
     networks:
-      m03-d03-network:
+      lab-network:
         ipv4_address: 10.10.30.13
 
 networks:
-  m03-d03-network:
+  lab-network:
     driver: bridge
     ipam:
       driver: default

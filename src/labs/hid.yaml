@@ -1,16 +1,16 @@
 version: "3"
 
 services:
-  m03-d14-bluetooth-bettercap:
-    container_name: m03-d14-bluetooth-bettercap
+  bluetooth-bettercap:
+    container_name: bluetooth-bettercap
     image: jedha/lab-bluetooth-bettercap
     hostname: bettercap
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.38
 
 networks:
-  m03-network:
+  lab-network:
     driver: bridge
     ipam:
       config:

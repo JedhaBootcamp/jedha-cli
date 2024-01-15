@@ -1,17 +1,17 @@
 version: "3"
 
 services:
-  m03-d08-suid:
-    container_name: m03-d08-suid
+  suid:
+    container_name: suid
     image: jedha/lab-suid
     expose:
       - "22"
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.31
 
 networks:
-  m03-network:
+  lab-network:
     driver: bridge
     ipam:
       config:

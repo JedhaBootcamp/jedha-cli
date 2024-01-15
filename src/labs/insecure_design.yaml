@@ -1,18 +1,18 @@
 version: "3"
 
 services:
-  m03-d06-insecure-design:
-    container_name: m03-d06-insecure-design
+  insecure-design:
+    container_name: insecure-design
     image: jedha/lab-insecure-design
     hostname: jedha-bootcamp
     expose:
       - 80
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.22
 
 networks:
-  m03-network:
+  lab-network:
     driver: bridge
     ipam:
       driver: default

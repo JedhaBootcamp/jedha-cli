@@ -1,18 +1,18 @@
 version: "3"
 
 services:
-  m03-d04-xss:
+  xss:
     image: jedha/lab-xss
-    container_name: m03-d04-xss
+    container_name: xss
     hostname: jedha-bootcamp
     expose:
       - 80
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.15
 
 networks:
-  m03-network:
+  lab-network:
     driver: bridge
     ipam:
       driver: default

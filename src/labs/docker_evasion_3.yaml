@@ -1,18 +1,18 @@
 version: "3"
 
 services:
-  m03-d13-docker-4:
-    container_name: m03-d13-docker-4
+  docker-4:
+    container_name: docker-4
     image: jedha/lab-docker-4
     hostname: jedha-vps2
     privileged: true
     mac_address: 9c:b6:d0:9f:12:cc
     networks:
-      m03-d13-docker-network:
+      lab-network:
         ipv4_address: 10.10.200.12
 
 networks:
-  m03-d13-docker-network:
+  lab-network:
     driver: bridge
     ipam:
       config:

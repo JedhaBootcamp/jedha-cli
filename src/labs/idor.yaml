@@ -1,19 +1,19 @@
 version: "3"
 
 services:
-  m03-d05-idor:
-    container_name: m03-d05-idor
+  idor:
+    container_name: idor
     image: jedha/lab-idor
     hostname: jedha-bootcamp
     expose:
       - 80
     entrypoint: python3 /app/app.py
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.18
 
 networks:
-  m03-network:
+  lab-network:
     driver: bridge
     ipam:
       driver: default

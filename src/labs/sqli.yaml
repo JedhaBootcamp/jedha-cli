@@ -1,21 +1,21 @@
 version: "3"
 
 services:
-  m03-d04-sqli:
-    container_name: m03-d04-sqli
+  sqli:
+    container_name: sqli
     image: jedha/lab-sqli
     hostname: jedha-bootcamp
     depends_on:
-      - m03-d04-sqli-mysql
+      - sqli-mysql
     expose:
       - 80
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.14
-      m03-d04-sqli-network:
+      sqli-network:
 
-  m03-d04-sqli-mysql:
-    container_name: m03-d04-sqli-mysql
+  sqli-mysql:
+    container_name: sqli-mysql
     image: jedha/lab-sqli-mysql
     hostname: jedha-bootcamp
     environment:
@@ -26,13 +26,13 @@ services:
     expose:
       - 3306
     networks:
-      m03-d04-sqli-network:
+      sqli-network:
 
 networks:
-  m03-d04-sqli-network:
+  sqli-network:
     driver: bridge
 
-  m03-network:
+  lab-network:
     driver: bridge
     ipam:
       driver: default

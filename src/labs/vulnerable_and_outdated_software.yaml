@@ -1,8 +1,8 @@
 version: "3"
 
 services:
-  m03-d06-cms-dragon:
-    container_name: m03-d06-cms-dragon
+  cms-dragon:
+    container_name: cms-dragon
     image: jedha/lab-cms-dragon
     hostname: jedha-bootcamp
     expose:
@@ -10,12 +10,12 @@ services:
     environment:
       POSTGRES_PASSWORD: "48h9qErrWqpCMB5pzeC8LCDEFrNH"
     networks:
-      m03-d06-labs-network:
-      m03-network:
+      labs-network:
+      lab-network:
         ipv4_address: 10.10.3.24
 
-  m03-d06-cms-dragon-db:
-    container_name: m03-d06-cms-dragon-db
+  cms-dragon-db:
+    container_name: cms-dragon-db
     image: jedha/lab-cms-dragon-db
     hostname: jedha-bootcamp
     environment:
@@ -23,33 +23,33 @@ services:
     expose:
       - 5432
     networks:
-      m03-d06-labs-network:
+      labs-network:
 
-  m03-d06-goldenclub:
-    container_name: m03-d06-goldenclub
+  goldenclub:
+    container_name: goldenclub
     image: jedha/lab-goldenclub
     hostname: jedha-bootcamp
     expose:
       - 80
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.25
 
-  m03-d06-jwt-integrity:
-    container_name: m03-d06-jwt-integrity
+  jwt-integrity:
+    container_name: jwt-integrity
     image: jedha/lab-jwt-integrity
     hostname: jedha-bootcamp
     expose:
       - 80
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.26
 
 networks:
-  m03-d06-labs-network:
+  labs-network:
     driver: bridge
 
-  m03-network:
+  lab-network:
     driver: bridge
     ipam:
       driver: default

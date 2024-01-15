@@ -1,17 +1,16 @@
 version: "3"
 
 services:
-  m03-d08-sudo-2:
-    container_name: m03-d08-sudo-2
+  sudo-2:
+    container_name: sudo-2
     image: jedha/lab-sudo-2
     hostname: linux2
     networks:
-      m03-network:
+      lab-network:
         ipv4_address: 10.10.3.34
 
-
 networks:
-  m03-network:
+  lab-network:
     driver: bridge
     ipam:
       config:
