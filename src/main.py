@@ -17,7 +17,7 @@ try:
 except ImportError:
     from yaml import Loader
 
-from misc import get_docker_compose_command, get_lab_config_file
+from .misc import get_docker_compose_command, get_lab_config_file
 
 app = typer.Typer(
     name="jedhacli",
