@@ -6,15 +6,6 @@ import pkg_resources
 import typer
 
 
-def get_docker_command(command):
-    """
-    Manage the Docker command depending on the OS.
-    """
-    if platform.system() != "Darwin":
-        command.insert(0, "sudo")
-    return command
-
-
 def get_lab_config_file(labname: str) -> str:
     """
     Get the content of the lab's Docker Compose configuration file.
@@ -37,30 +28,63 @@ def run_command(command: List[str]) -> bool:
     """
     try:
         subprocess.run(
-            command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True
+            command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True
         )
         return True
     except (subprocess.CalledProcessError, FileNotFoundError):
         return False
 
 
-def test_environment():
+def docker_is_installed() -> bool:
     """
-    Check if Docker and Docker-Compose are installed on the machine.
-    """
-    docker_installed = run_command(["docker", "--version"])
-    docker_compose_installed = run_command(["docker", "compose", "version"])
-    old_version_installed = run_command(["docker-compose", "--version"])
+    Check if Docker is installed on the machine.
 
-    if not docker_installed:
+    Returns:
+        bool: True if Docker is installed, False otherwise.
+    """
+    return run_command(["docker", "--version"])
+
+
+def docker_compose_v2_is_installed() -> bool:
+    """
+    Check if Docker Compose V2 is installed on the machine.
+
+    Returns:
+        bool: True if Docker Compose is installed, False otherwise.
+    """
+    return run_command(["docker", "compose", "version"])
+
+
+def docker_compose_v1_is_installed() -> bool:
+    """
+    Check if Docker Compose V1 is installed on the machine.
+
+    Returns:
+        bool: True if Docker Compose is installed, False otherwise.
+    """
+    return run_command(["docker-compose", "--version"])
+
+
+def get_docker_compose_command(args: List[str]) -> List[str]:
+    """
+    Manage the Docker command depending on the OS.
+
+    Args:
+        args (List[str]): The arguments to pass to the Docker compose command.
+    """
+    if not docker_is_installed():
         print("Docker not found. Please install it.")
         raise typer.Exit(code=1)
-
-    if not docker_compose_installed:
-        if old_version_installed:
-            print(
-                "You have an old version of docker-compose, please go on the official website to switch to V2"
-            )
-        else:
-            print("Docker Compose not found. Please install Docker Desktop")
+    if docker_compose_v2_is_installed():
+        args.insert(0, "docker")
+        args.insert(1, "compose")
+    elif docker_compose_v1_is_installed():
+        args.insert(0, "docker-compose")
+    else:
+        print(
+            "Docker Compose (either V1 or V2) not found. Please install Docker Desktop or docker-compose."
+        )
         raise typer.Exit(code=1)
+    if platform.system() != "Darwin":
+        args.insert(0, "sudo")
+    return args

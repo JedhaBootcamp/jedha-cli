@@ -17,7 +17,7 @@ try:
 except ImportError:
     from yaml import Loader
 
-from .misc import get_docker_command, get_lab_config_file, test_environment
+from misc import get_docker_compose_command, get_lab_config_file
 
 app = typer.Typer(
     name="jedhacli",
@@ -40,7 +40,6 @@ A CLI to manage the labs for Cybersecurity Bootcamp at Jedha (https://jedha.co).
 ⠀⠀⠀⠀⠈⠙⠛⠿⠿⠿⠇⠀⠉⠁⠀⠀⠀⠀⠀\n
     """,
     epilog="Made with ❤️ by the Jedha Bootcamp Team",
-    callback=test_environment,
 )
 
 console = Console()
@@ -80,9 +79,7 @@ def status(labname: str):
         return
 
     try:
-        command = get_docker_command(
-            ["docker", "compose", "--file", lab_config_file, "ps"]
-        )
+        command = get_docker_compose_command(["--file", lab_config_file, "ps"])
         subprocess.run(
             command,
             check=True,
@@ -107,9 +104,7 @@ def start(labname: str):
         return
 
     try:
-        command = get_docker_command(
-            ["docker", "compose", "--file", lab_config_file, "up", "-d"]
-        )
+        command = get_docker_compose_command(["--file", lab_config_file, "up", "-d"])
         subprocess.run(
             command,
             check=True,
@@ -139,9 +134,7 @@ def restart(labname: str):
         return
 
     try:
-        command = get_docker_command(
-            ["docker", "compose", "--file", lab_config_file, "restart"]
-        )
+        command = get_docker_compose_command(["--file", lab_config_file, "restart"])
         subprocess.run(
             command,
             check=True,
@@ -173,9 +166,7 @@ def stop(
 
     if force:
         try:
-            command = get_docker_command(
-                ["docker", "compose", "--file", lab_config_file, "down"]
-            )
+            command = get_docker_compose_command(["--file", lab_config_file, "down"])
             subprocess.run(
                 command,
                 check=True,
