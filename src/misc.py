@@ -65,6 +65,16 @@ def docker_compose_v1_is_installed() -> bool:
     return run_command(["docker-compose", "--version"])
 
 
+def docker_requires_sudo() -> bool:
+    """
+    Check if Docker requires sudo.
+
+    Returns:
+        bool: True if Docker requires sudo, False otherwise.
+    """
+    return run_command(["docker", "ps"])
+
+
 def get_docker_compose_command(args: List[str]) -> List[str]:
     """
     Manage the Docker command depending on the OS.
@@ -85,6 +95,6 @@ def get_docker_compose_command(args: List[str]) -> List[str]:
             "Docker Compose (either V1 or V2) not found. Please install Docker Desktop or docker-compose."
         )
         raise typer.Exit(code=1)
-    if platform.system() != "Darwin":
+    if platform.system() != "Darwin" or docker_requires_sudo():
         args.insert(0, "sudo")
     return args
