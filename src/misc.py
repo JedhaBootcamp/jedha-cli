@@ -72,7 +72,7 @@ def docker_requires_sudo() -> bool:
     Returns:
         bool: True if Docker requires sudo, False otherwise.
     """
-    return run_command(["docker", "ps"])
+    return not run_command(["docker", "ps"])
 
 
 def get_docker_compose_command(args: List[str]) -> List[str]:
