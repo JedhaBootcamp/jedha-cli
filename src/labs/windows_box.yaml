@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  windows-box:
+    container_name: windows-box
+    image: jedha/lab-windows-box
+    hostname: DESKTOP-DK6OEO9
+    sysctls:
+      - net.ipv4.icmp_echo_ignore_all=1
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.4
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.3.0/24

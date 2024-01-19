@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  bypass-login:
+    container_name: bypass-login
+    image: jedha/lab-bypass-login
+    hostname: jedha-bootcamp
+    expose:
+      - 80
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.21
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24

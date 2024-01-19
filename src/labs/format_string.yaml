@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  format-string:
+    container_name: format-string
+    image: jedha/lab-format-string
+    expose:
+      - "1339"
+    restart: always
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.36
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.3.0/24

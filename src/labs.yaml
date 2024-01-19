@@ -1,0 +1,56 @@
+- name: msf_1
+  description:
+- name: windows_box
+  description:
+- name: xss
+  description:
+- name: format_string
+  description:
+- name: suid
+  description:
+- name: docker_evasion_1
+  description:
+- name: wifi_wpa2_cracking
+  description:
+- name: bypass-login
+  description:
+- name: security_misconfiguration
+  description:
+- name: sudo_1
+  description:
+- name: path_traversal
+  description:
+- name: linux_privesc
+  description:
+- name: vulnerable_and_outdated_software
+  description:
+- name: sqli
+  description:
+- name: dns_zone_transfer
+  description:
+- name: pentesting_network_services
+  description:
+- name: sudo_3
+  description:
+- name: manual_audit
+  description:
+- name: docker_evasion_3
+  description:
+- name: suid_2
+  description:
+- name: template_injection
+  description:
+- name: docker_evasion_2
+  description:
+- name: sudo_2
+  description:
+- name: hid
+  description:
+- name: insecure_design
+  description:
+- name: ssrf
+  description:
+- name: idor
+  description:
+- name: msf_2
+  description:

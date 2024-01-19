@@ -1,15 +1,61 @@
 # Jedha CLI
 
+Practice your Cybersecurity skills with Jedha CLI.
+
+You can launch our labs directly from your terminal.
+
+## Requirements
+
+- Python 3.10+
+- Docker
+- Docker Compose
+- AMD64 CPU (preferably, otherwise some labs may not work)
+
+This CLI is build to be used on [Kali Linux](https://www.kali.org/) priorly. It may work on other Linux distributions, but we don't support them. Also it may work on Windows and MacOS but we don't support them either.
+
+## Installation
+
+Be sure you meet all the requirements before installing the CLI. Then:
+
+```bash
+pip install jedha-cli
+```
+
+## Usage
+
+## How does it work?
+
+The CLI will download the lab you want to launch from our servers, and then launch it using Docker Compose.
+
 ## Development
 
-We use [Poetry](https://python-poetry.org/) to manage dependencies and virtual environments.
+If you want to try the project from the source code, you can clone this repository and install it using:
 
-Once Poetry is installed, run `poetry install` to install the dependencies.
+```bash
+poetry install
+```
 
-To run pre-commit hooks, run `poetry run pre-commit run --all-files`. Or:
+> You can install `poetry` using `pipx install poetry`.
+
+Start the virtual environment using:
 
 ```bash
 poetry shell
-pre-commit install
-pre-commit run --all-files
 ```
+
+Then, you can run the CLI using:
+
+```bash
+python -m src.main --help
+```
+
+To test locally the `pip install` you can use:
+
+```bash
+poetry build
+pip install dist/*.tar.gz
+```
+
+## What is Jedha?
+
+[Jedha](https://www.jedha.co) is a Cybersecurity and Data Science bootcamp based in France. If you are interested in learning more about our bootcamps, you can visit our [website](https://www.jedha.co).

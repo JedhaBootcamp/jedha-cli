@@ -1,0 +1,57 @@
+version: "3"
+
+services:
+  cms-dragon:
+    container_name: cms-dragon
+    image: jedha/lab-cms-dragon
+    hostname: jedha-bootcamp
+    expose:
+      - 80
+    environment:
+      POSTGRES_PASSWORD: "48h9qErrWqpCMB5pzeC8LCDEFrNH"
+    networks:
+      labs-network:
+      lab-network:
+        ipv4_address: 10.10.3.24
+
+  cms-dragon-db:
+    container_name: cms-dragon-db
+    image: jedha/lab-cms-dragon-db
+    hostname: jedha-bootcamp
+    environment:
+      POSTGRES_PASSWORD: "48h9qErrWqpCMB5pzeC8LCDEFrNH"
+    expose:
+      - 5432
+    networks:
+      labs-network:
+
+  goldenclub:
+    container_name: goldenclub
+    image: jedha/lab-goldenclub
+    hostname: jedha-bootcamp
+    expose:
+      - 80
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.25
+
+  jwt-integrity:
+    container_name: jwt-integrity
+    image: jedha/lab-jwt-integrity
+    hostname: jedha-bootcamp
+    expose:
+      - 80
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.26
+
+networks:
+  labs-network:
+    driver: bridge
+
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24

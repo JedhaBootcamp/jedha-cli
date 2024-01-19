@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  bluetooth-bettercap:
+    container_name: bluetooth-bettercap
+    image: jedha/lab-bluetooth-bettercap
+    hostname: bettercap
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.38
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.3.0/24

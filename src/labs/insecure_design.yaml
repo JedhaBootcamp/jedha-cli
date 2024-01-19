@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  insecure-design:
+    container_name: insecure-design
+    image: jedha/lab-insecure-design
+    hostname: jedha-bootcamp
+    expose:
+      - 80
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.22
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24

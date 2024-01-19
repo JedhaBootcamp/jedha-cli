@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  sudo-2:
+    container_name: sudo-2
+    image: jedha/lab-sudo-2
+    hostname: linux2
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.34
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.3.0/24

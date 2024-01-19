@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  xss:
+    image: jedha/lab-xss
+    container_name: xss
+    hostname: jedha-bootcamp
+    expose:
+      - 80
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.15
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24

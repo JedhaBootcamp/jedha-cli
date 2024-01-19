@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  docker-1:
+    container_name: docker-1
+    image: jedha/lab-docker-1
+    mac_address: 9c:b6:d0:12:0f:34
+    hostname: jail1
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.37
+      lab-docker-network:
+        ipv4_address: 10.10.200.143
+
+  docker-2:
+    container_name: docker-2
+    image: jedha/lab-docker-2
+    hostname: host
+    mac_address: 9c:b6:d0:32:9f:12
+    networks:
+      lab-docker-network:
+        ipv4_address: 10.10.200.52
+
+networks:
+  lab-docker-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.200.0/24
+
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.3.0/24

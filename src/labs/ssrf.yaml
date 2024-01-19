@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  ssrflab-1:
+    container_name: ssrflab-1
+    image: jedha/lab-ssrflab-1
+    hostname: jedha-bootcamp
+    expose:
+      - 80
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.20
+      ssrflab-network:
+        ipv4_address: 172.16.16.2
+
+  ssrflab-2:
+    container_name: ssrflab-2
+    image: jedha/lab-ssrflab-2
+    hostname: jedha-bootcamp
+    networks:
+      ssrflab-network:
+        ipv4_address: 172.16.16.3
+
+  ssrflab-3:
+    container_name: ssrflab-3
+    image: jedha/lab-ssrflab-3
+    hostname: jedha-bootcamp
+    networks:
+      ssrflab-network:
+        ipv4_address: 172.16.16.5
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24
+  ssrflab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.16.0/29
+          gateway: 172.16.16.1

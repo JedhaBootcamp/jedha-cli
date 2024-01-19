@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  imagemagick:
+    container_name: imagemagick
+    image: jedha/lab-imagemagick
+    expose:
+      - "8000"
+    command: "php -t /var/www/html -S 0.0.0.0:8000"
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.12
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24

@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  manual-audit:
+    container_name: manual-audit
+    image: jedha/lab-manual-audit
+    hostname: vagrant-2008
+    sysctls:
+      - net.ipv4.icmp_echo_ignore_all=1
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.41
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.3.0/24

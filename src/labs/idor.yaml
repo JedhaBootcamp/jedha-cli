@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  idor:
+    container_name: idor
+    image: jedha/lab-idor
+    hostname: jedha-bootcamp
+    expose:
+      - 80
+    entrypoint: python3 /app/app.py
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.18
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24

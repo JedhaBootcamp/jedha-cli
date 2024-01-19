@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  suid:
+    container_name: suid
+    image: jedha/lab-suid
+    expose:
+      - "22"
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.31
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.3.0/24

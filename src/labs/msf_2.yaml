@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  tomcat:
+    container_name: tomcat
+    image: jedha/lab-tomcat
+    expose:
+      - "8080"
+    networks:
+      lab-network:
+        ipv4_address: 10.10.3.11
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24
