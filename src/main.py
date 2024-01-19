@@ -46,12 +46,12 @@ A CLI to manage the labs for Cybersecurity Bootcamp at Jedha (https://jedha.co).
 console = Console()
 
 
-@app.command("config", help="Configure the CLI.")
-def config():
-    """
-    Configure the CLI by prompting the user for the required information.
-    """
-    pass
+# @app.command("config", help="Configure the CLI.")
+# def config():
+#     """
+#     Configure the CLI by prompting the user for the required information.
+#     """
+#     pass
 
 
 @app.command("list", help="List all the labs available.")
