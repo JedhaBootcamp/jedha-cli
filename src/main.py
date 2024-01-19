@@ -167,7 +167,15 @@ def stop(
 
     if force:
         try:
-            command = get_docker_compose_command(["--file", lab_config_file, "down"])
+            command = get_docker_compose_command(
+                [
+                    "--file",
+                    lab_config_file,
+                    "down",
+                    "--remove-orphans",
+                    "--volumes",
+                ],
+            )
             subprocess.run(
                 command,
                 check=True,
