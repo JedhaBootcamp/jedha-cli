@@ -21,6 +21,12 @@ Be sure you meet all the requirements before installing the CLI. Then:
 pip install jedha-cli
 ```
 
+Sometimes you may need to add it to the `PATH` variable. You can do it by adding the following line to your `.bashrc` or `.zshrc`:
+
+```bash
+export PATH="/home/kali/.local/bin:$PATH"
+```
+
 ## Usage
 
 ## How does it work?
