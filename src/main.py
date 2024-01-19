@@ -188,6 +188,51 @@ def stop(
         print("Aborting.")
 
 
+@app.command(
+    "remove",
+    help="Remove definitively a specific lab environment. Do it to free your disk space.",
+)
+def remove(
+    labname: str,
+    force: Annotated[
+        bool, typer.Option(prompt="Are you sure you want to remove the lab?")
+    ],
+):
+    """
+    Remove a lab.
+
+    Args:
+        labname (str): Name of the lab.
+    """
+    lab_config_file = get_lab_config_file(labname)
+    if not lab_config_file or not os.path.exists(lab_config_file):
+        print("Docker Compose file not found for the specified lab.")
+        return
+
+    if force:
+        try:
+            command = get_docker_compose_command(
+                [
+                    "--file",
+                    lab_config_file,
+                    "down",
+                    "--remove-orphans",
+                    "--volumes",
+                    "--rmi",
+                    "all",
+                ]
+            )
+            subprocess.run(
+                command,
+                check=True,
+            )
+            print(f"Lab {labname} definitively removed successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to clean lab {labname}.")
+    else:
+        print("Aborting.")
+
+
 def main():
     app()
 
