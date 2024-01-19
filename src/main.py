@@ -40,6 +40,7 @@ A CLI to manage the labs for Cybersecurity Bootcamp at Jedha (https://jedha.co).
 ⠀⠀⠀⠀⠈⠙⠛⠿⠿⠿⠇⠀⠉⠁⠀⠀⠀⠀⠀\n
     """,
     epilog="Made with ❤️ by the Jedha Bootcamp Team",
+    no_args_is_help=True,
 )
 
 console = Console()
