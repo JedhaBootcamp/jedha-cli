@@ -5,8 +5,8 @@ services:
     container_name: little-misconfiguration
     image: jedha/lab-little-misconfiguration
     hostname: jedha-bootcamp
-    expose:
-      - 80
+    ports:
+      - "${MISCONF_PORT}:80"
     networks:
       lab-network:
         ipv4_address: 10.10.3.23

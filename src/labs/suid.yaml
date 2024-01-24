@@ -4,8 +4,8 @@ services:
   suid:
     container_name: suid
     image: jedha/lab-suid
-    expose:
-      - 22
+    ports:
+      - "${SUID1_PORT}:22"
     networks:
       lab-network:
         ipv4_address: 10.10.3.31
