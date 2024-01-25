@@ -17,7 +17,7 @@ services:
   sqli-mysql:
     container_name: sqli-mysql
     image: jedha/lab-sqli-mysql
-    hostname: jedha-bootcamp
+    hostname: sqli-mysql
     environment:
       MYSQL_DATABASE: sqli
       MYSQL_ROOT_PASSWORD: XCG45DzjNCWzjC3QAynDQtaoVqCe
