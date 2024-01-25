@@ -8,27 +8,8 @@ services:
     networks:
       lab-network:
         ipv4_address: 10.10.3.27
-
-  linux-privesc-project-1:
-    container_name: linux-privesc-project-1
-    image: jedha/lab-linux-privesc-project-1
-    networks:
-      lab-network:
-        ipv4_address: 10.10.3.28
-
-  linux-privesc-project-2:
-    container_name: linux-privesc-project-2
-    image: jedha/lab-linux-privesc-project-2
-    networks:
-      lab-network:
-        ipv4_address: 10.10.3.29
-
-  linux-privesc-project-3:
-    container_name: linux-privesc-project-3
-    image: jedha/lab-linux-privesc-project-3
-    networks:
-      lab-network:
-        ipv4_address: 10.10.3.30
+    cap_add:
+      - SYS_PTRACE
 
 networks:
   lab-network:
