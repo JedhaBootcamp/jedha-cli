@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jedha-cli"
-version = "1.0.0"
+version = "1.0.1"
 description = "A CLI to start cybersecurity labs and practice your skills"
 authors = ["ademenet <alain@jedha.co>"]
 readme = "README.md"
@@ -16,7 +16,6 @@ python = "^3.10"
 typer = {extras = ["all"], version = "^0.9.0"}
 pyyaml = "^6.0.1"
 
-
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.6.0"
 scriv = {extras = ["toml"], version = "^1.5.1"}
@@ -26,5 +25,5 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.scriv]
-version = "literal: pyproject.toml: project.version"
+version = "literal: pyproject.toml: tool.poetry.version"
 format = "md"
