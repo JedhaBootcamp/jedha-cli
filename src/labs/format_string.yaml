@@ -5,7 +5,7 @@ services:
     container_name: format-string
     image: jedha/lab-format-string
     ports:
-      - "1339"1339"
+      - "1339:1339"
     restart: always
     networks:
       lab-network:
