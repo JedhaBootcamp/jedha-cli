@@ -4,8 +4,8 @@ services:
   imagemagick:
     container_name: imagemagick
     image: jedha/lab-imagemagick
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     command: "php -t /var/www/html -S 0.0.0.0:8000"
     networks:
       lab-network:

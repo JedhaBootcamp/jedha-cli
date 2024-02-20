@@ -5,8 +5,8 @@ services:
     container_name: ssti-java-thymeleaf
     image: jedha/lab-ssti-java-thymeleaf
     hostname: jedha-bootcamp
-    ports:
-      - "80:80"
+    expose:
+      - 80
     networks:
       lab-network:
         ipv4_address: 10.10.3.16
@@ -15,8 +15,8 @@ services:
     container_name: ssti-python-jinja2
     image: jedha/lab-ssti-python-jinja2
     hostname: jedha-bootcamp
-    ports:
-      - "80:80"
+    expose:
+      - 80
     entrypoint: python3 /root/server.py
     networks:
       lab-network:

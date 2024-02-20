@@ -4,8 +4,8 @@ services:
   tomcat:
     container_name: tomcat
     image: jedha/lab-tomcat
-    ports:
-      - "8080:8080"
+    expose:
+      - "8080"
     networks:
       lab-network:
         ipv4_address: 10.10.3.11

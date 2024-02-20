@@ -7,8 +7,8 @@ services:
     hostname: jedha-bootcamp
     depends_on:
       - sqli-mysql
-    ports:
-      - "80:80"
+    expose:
+      - 80
     networks:
       lab-network:
         ipv4_address: 10.10.3.14
@@ -23,8 +23,8 @@ services:
       MYSQL_ROOT_PASSWORD: XCG45DzjNCWzjC3QAynDQtaoVqCe
       MYSQL_USER: jedha
       MYSQL_PASSWORD: XCG45DzjNCWzjC3QAynDQtaoVqCe
-    ports:
-      - "3306:3306"
+    expose:
+      - 3306
     networks:
       sqli-network:
 

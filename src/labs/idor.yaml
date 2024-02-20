@@ -5,8 +5,8 @@ services:
     container_name: idor
     image: jedha/lab-idor
     hostname: jedha-bootcamp
-    ports:
-      - "80:80"
+    expose:
+      - 80
     entrypoint: python3 /app/app.py
     networks:
       lab-network:
