@@ -1,3 +1,11 @@
+<a id='changelog-1.0.4'></a>
+
+# 1.0.4 — 2024-02-22
+
+## Fixed
+
+- Missing 'requests' module.
+
 <a id='changelog-1.0.3'></a>
 
 # 1.0.3 — 2024-02-22
