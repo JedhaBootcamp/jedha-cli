@@ -1,9 +1,61 @@
 import platform
 import subprocess
-from typing import List
+from typing import List, Optional
+import requests
+import sys
 
 import pkg_resources
 import typer
+
+PACKAGE_NAME = "jedha-cli"
+
+
+def get_latest_version() -> Optional[str]:
+    """
+    Get the latest version of a package from PyPI.
+    """
+    url = f"https://pypi.org/pypi/{PACKAGE_NAME}/json"
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = response.json()
+            return data["info"]["version"]
+        else:
+            print("Warning: Unable to connect to PyPI")
+    except Exception as e:
+        print(f"Error: {e}")
+    return None
+
+
+def current_installed_version() -> str:
+    """
+    Get the current installed version of the package from pyproject.toml.
+    """
+    try:
+        from importlib.metadata import version
+    except ImportError:
+        print("Warning: importlib-metadata not found. Please upgrade to Python 3.8+")
+    try:
+        return version(PACKAGE_NAME)
+    except Exception as e:
+        print(
+            f"Error retrieving version for package {PACKAGE_NAME}: {e}", file=sys.stderr
+        )
+        raise SystemExit(1)
+
+
+def check_for_updates() -> None:
+    """
+    Check for updates to the package.
+    """
+    latest_version = get_latest_version()
+    if latest_version is not None:
+        if latest_version != current_installed_version():
+            print(
+                f"Warning! New version of {PACKAGE_NAME} available: {latest_version}. You are using {current_installed_version()}. Please upgrade."
+            )
+    else:
+        print("Unable to check for updates.")
 
 
 def get_lab_config_file(labname: str) -> str:

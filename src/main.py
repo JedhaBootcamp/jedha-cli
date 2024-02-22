@@ -16,7 +16,7 @@ try:
 except ImportError:
     from yaml import Loader
 
-from .misc import get_docker_compose_command, get_lab_config_file
+from .misc import get_docker_compose_command, get_lab_config_file, check_for_updates
 
 app = typer.Typer(
     name="jedhacli",
@@ -234,6 +234,7 @@ def remove(
 
 
 def main():
+    check_for_updates()
     app()
 
 
