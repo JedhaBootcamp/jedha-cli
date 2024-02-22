@@ -1,56 +1,84 @@
 - name: msf_1
-  description:
-- name: windows_box
-  description:
-- name: xss
-  description:
-- name: format_string
-  description:
-- name: suid
-  description:
-- name: docker_evasion_1
-  description:
-- name: wifi_wpa2_cracking
-  description:
-- name: bypass-login
-  description:
-- name: security_misconfiguration
-  description:
-- name: sudo_1
-  description:
-- name: path_traversal
-  description:
-- name: linux_privesc
-  description:
-- name: vulnerable_and_outdated_software
-  description:
-- name: sqli
-  description:
-- name: dns_zone_transfer
-  description:
-- name: pentesting_network_services
-  description:
-- name: sudo_3
-  description:
-- name: manual_audit
-  description:
-- name: docker_evasion_3
-  description:
-- name: suid_2
-  description:
-- name: template_injection
-  description:
-- name: docker_evasion_2
-  description:
-- name: sudo_2
-  description:
-- name: hid
-  description:
-- name: insecure_design
-  description:
-- name: ssrf
-  description:
-- name: idor
-  description:
+  ip: "10.10.3.12"
+  description: Will you be able to get a Remote Command Execution using Metasploit?
 - name: msf_2
-  description:
+  ip: "10.10.3.11"
+  description: Will you be able to get a Remote Command Execution using Metasploit? Bonus machine!
+- name: dns_zone_transfer
+  ip: "10.10.30.13"
+  description: Will you be able to get a DNS Zone Transfer?
+- name: pentesting_network_services
+  ip: ""
+  description: Find as many flags as you can!
+- name: sqli
+  ip: "10.10.3.14"
+  description: Will you be able to use SQL injection to get the final flag?
+- name: xss
+  ip: "10.10.3.15"
+  description: Will you be able to use XSS to get the final flag?
+- name: template_injection
+  ip: "10.10.3.16 and 10.10.3.17"
+  description: We are proud of our new website! Can you spot any vulnerabilities?
+- name: idor
+  ip: "10.10.3.18"
+  description: Your goal is to find the admin profile and password!
+- name: path_traversal
+  ip: "10.10.3.19"
+  description: Will you be able to use Path Traversal to get the final flag?
+- name: ssrf
+  ip: "10.10.3.20"
+  description: Practice Server Side Request Forgery! Easy level at http://10.10.3.20/level-easy.html and medium level at http://10.10.3.20/level-medium.html.
+- name: bypass-login
+  ip: "10.10.3.21"
+  description: A login page has been set up. Can you bypass it?
+- name: insecure_design
+  ip: "10.10.3.22"
+  description: Sometimes, the problem seats between the chair and the keyboard.
+- name: security_misconfiguration
+  ip: "10.10.3.23"
+  description: A misconfiguration has been found. Can you exploit it?
+- name: vulnerable_and_outdated_software
+  ip: ""
+  description: Find as many flags as you can!
+- name: linux_privesc
+  ip: "10.10.3.27"
+  description: Escalate your privileges to root! You can start with "ssh Creed@10.10.3.27" and "Mescaline".
+- name: suid
+  ip: "10.10.3.31"
+  description: 'Will you be able to exploit a SUID binary to get the final flag? (username and password: "jedha")'
+- name: suid_2
+  ip: "10.10.3.32"
+  description: 'Another SUID binary is waiting for you! (username: "exploit", password: "PwnMe")'
+- name: sudo_1
+  ip: "10.10.3.33"
+  description: 'Will you be able to exploit a sudo vulnerability to get the final flag? (username and password: "jedha")'
+- name: sudo_2
+  ip: "10.10.3.34"
+  description: 'Another sudo vulnerability is waiting for you! (username: "exploit", password: "PwnMe")'
+- name: sudo_3
+  ip: "10.10.3.35"
+  description: 'Oh! Another sudo vulnerability is waiting for you! (username: "exploit", password: "PwnMe")'
+- name: manual_audit
+  ip: "10.10.3.41"
+  description: 'You have been hired to audit a server. Can you find any vulnerabilities? (username: "Jeremie", password: "hunter22")'
+- name: windows_box
+  ip: "10.10.3.4"
+  description: 'Do you think you would be able to use your new Privilege Escalation skills on a more modern Windows box? (username: "Lp1", password: "naruto1")'
+- name: format_string
+  ip: "10.10.3.36"
+  description: Have you check the 1339 port?
+- name: docker_evasion_1
+  ip: "10.10.3.37"
+  description: 'Can you escape from a Docker container? (username: "exploit", password: "PwnMe")'
+- name: docker_evasion_2
+  ip: "10.10.200.10"
+  description: 'Can you escape from a Docker container? (username: "root", password: "PwnMe", port: 2222)'
+- name: docker_evasion_3
+  ip: "10.10.200.12"
+  description: 'Can you gain access on jedha-vps2? (username: "root", password: "PwnMe", port: 2222)'
+- name: hid
+  ip: "10.10.3.38"
+  description: "A Bettercap instance!"
+- name: wifi_wpa2_cracking
+  ip: "10.10.3.47"
+  description: '(username: "exploit", password: "aircrack")'

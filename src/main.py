@@ -62,9 +62,9 @@ def list() -> List[str]:
     with open(labs_yaml_file, "r") as f:
         filename_array = load(f, Loader=Loader)
 
-    table = Table("Name", "Description")
+    table = Table("Name", "IP", "Description", show_lines=True, title="Available Labs")
     for i in filename_array:
-        table.add_row(i["name"], i["description"])
+        table.add_row(i["name"], i["ip"], i["description"])
     console.print(table)
 
 
