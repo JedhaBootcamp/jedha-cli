@@ -5,8 +5,8 @@ services:
     container_name: cms-dragon
     image: jedha/lab-cms-dragon
     hostname: jedha-bootcamp
-    ports:
-      - "80:80"
+    expose:
+      - 80
     environment:
       POSTGRES_PASSWORD: "48h9qErrWqpCMB5pzeC8LCDEFrNH"
     networks:
@@ -20,8 +20,8 @@ services:
     hostname: jedha-bootcamp
     environment:
       POSTGRES_PASSWORD: "48h9qErrWqpCMB5pzeC8LCDEFrNH"
-    ports:
-      - "5432:5432"
+    expose:
+      - 5432
     networks:
       labs-network:
 
@@ -29,8 +29,8 @@ services:
     container_name: goldenclub
     image: jedha/lab-goldenclub
     hostname: jedha-bootcamp
-    ports:
-      - "80:80"
+    expose:
+      - 80
     networks:
       lab-network:
         ipv4_address: 10.10.3.25
@@ -39,8 +39,8 @@ services:
     container_name: jwt-integrity
     image: jedha/lab-jwt-integrity
     hostname: jedha-bootcamp
-    ports:
-      - "80:80"
+    expose:
+      - 80
     networks:
       lab-network:
         ipv4_address: 10.10.3.26

@@ -5,8 +5,8 @@ services:
     image: jedha/lab-xss
     container_name: xss
     hostname: jedha-bootcamp
-    ports:
-      - "80:80"
+    expose:
+      - 80
     networks:
       lab-network:
         ipv4_address: 10.10.3.15

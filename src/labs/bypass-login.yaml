@@ -5,8 +5,8 @@ services:
     container_name: bypass-login
     image: jedha/lab-bypass-login
     hostname: jedha-bootcamp
-    ports:
-      - "80:80"
+    expose:
+      - 80
     networks:
       lab-network:
         ipv4_address: 10.10.3.21
