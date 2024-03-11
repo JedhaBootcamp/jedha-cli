@@ -16,12 +16,14 @@ def get_latest_version() -> Optional[str]:
     """
     url = f"https://pypi.org/pypi/{PACKAGE_NAME}/json"
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=5)
         if response.status_code == 200:
             data = response.json()
             return data["info"]["version"]
         else:
             print("Warning: Unable to connect to PyPI")
+    except requests.Timeout:
+        print("Warning: Timeout when trying to connect to get last version from PyPI")
     except Exception as e:
         print(f"Error: {e}")
     return None
