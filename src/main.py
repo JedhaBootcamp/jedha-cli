@@ -109,10 +109,6 @@ def start(labname: str):
             command,
             check=True,
         )
-        subprocess.run(
-            ["docker", "compose", "--file", lab_config_file, "up", "-d"],
-            check=True,
-        )
         print(f"Lab {labname} started successfully.")
     except subprocess.CalledProcessError as e:
         print(
