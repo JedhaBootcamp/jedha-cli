@@ -223,7 +223,6 @@ def stop(
                     "--volumes",
                 ],
             )
-            print(command)
             subprocess.run(
                 command,
                 check=True,

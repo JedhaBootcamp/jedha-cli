@@ -162,8 +162,9 @@ def get_running_labs() -> set[str]:
     Returns:
         set[str]: The list of running labs.
     """
+    command = get_docker_compose_command(["ls"])
     result = subprocess.run(
-        ["docker", "compose", "ls"],
+        command,
         check=True,
         capture_output=True,
         text=True,
