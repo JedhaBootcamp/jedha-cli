@@ -9,7 +9,7 @@ import typer
 from rich import print
 from rich.console import Console
 from rich.table import Table
-from yaml import load
+from yaml import load, safe_load
 
 try:
     from yaml import CLoader as Loader
@@ -78,12 +78,29 @@ def status(labname: str):
         print("Docker Compose file not found for the specified lab.")
         return
 
+    with open(lab_config_file, "r") as file:
+        docker_compose = safe_load(file)
+    expected_containers = set(docker_compose["services"].keys())
+
     try:
         command = get_docker_compose_command(["--file", lab_config_file, "ps"])
-        subprocess.run(
-            command,
-            check=True,
+        result = subprocess.run(command, check=True, capture_output=True, text=True)
+        lines = result.stdout.splitlines()
+        container_lines = lines[1:]
+        running_containers = set(
+            line.split()[0] for line in container_lines if "Up" in line
         )
+
+        if not running_containers:
+            print(f"😴 {labname} is not running")
+        elif running_containers == expected_containers:
+            print(f"✅ {labname} is running as expected")
+        else:
+            failed_containers = expected_containers - running_containers
+            print(
+                f"⛔️ Some issues with the following containers: {', '.join(failed_containers)}"
+            )
+
     except subprocess.CalledProcessError as e:
         print(
             f"Failed to show status of lab {labname}: Error with the docker compose file or Docker itself"
