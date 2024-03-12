@@ -2,7 +2,7 @@
 
 import os
 import subprocess
-from typing import Annotated, List
+from typing import Annotated, Optional
 
 import pkg_resources
 import typer
@@ -16,7 +16,13 @@ try:
 except ImportError:
     from yaml import Loader
 
-from .misc import get_docker_compose_command, get_lab_config_file, check_for_updates
+from .misc import (
+    get_docker_compose_command,
+    get_lab_config_file,
+    check_for_updates,
+    get_running_labs,
+    is_lab_already_running,
+)
 
 app = typer.Typer(
     name="jedhacli",
@@ -54,7 +60,7 @@ console = Console()
 
 
 @app.command("list", help="List all the labs available.")
-def list() -> List[str]:
+def list():
     """
     List all the labs available.
     """
@@ -68,11 +74,29 @@ def list() -> List[str]:
     console.print(table)
 
 
-@app.command("status", help="Show the running labs.")
-def status(labname: str):
+@app.command(
+    "status",
+    help="Show the running labs. If a lab name is provided, it will show the status of that lab.",
+)
+def status(labname: Annotated[Optional[str], typer.Argument()] = None):
     """
-    Show the running labs.
+    Show the list of running labs.
+
+    If a lab name is provided, it will show the status of that lab.
+
+    Args:
+        labname (Optional[str]): Name of the lab.
     """
+    if labname is None:
+        running_labs = get_running_labs()
+        if running_labs:
+            print(
+                f"🔍 You have the following running labs: [b]{', '.join(running_labs)}[/b]."
+            )
+        else:
+            print("☕️ No labs are currently running.")
+        return
+
     lab_config_file = get_lab_config_file(labname)
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
@@ -83,7 +107,9 @@ def status(labname: str):
     expected_containers = set(docker_compose["services"].keys())
 
     try:
-        command = get_docker_compose_command(["--file", lab_config_file, "ps"])
+        command = get_docker_compose_command(
+            ["--file", lab_config_file, "-p", labname, "ps"]
+        )
         result = subprocess.run(command, check=True, capture_output=True, text=True)
         lines = result.stdout.splitlines()
         container_lines = lines[1:]
@@ -120,8 +146,13 @@ def start(labname: str):
         print("Docker Compose file not found for the specified lab.")
         return
 
+    if is_lab_already_running():
+        return
+
     try:
-        command = get_docker_compose_command(["--file", lab_config_file, "up", "-d"])
+        command = get_docker_compose_command(
+            ["--file", lab_config_file, "-p", labname, "up", "-d"]
+        )
         subprocess.run(
             command,
             check=True,
@@ -147,7 +178,9 @@ def restart(labname: str):
         return
 
     try:
-        command = get_docker_compose_command(["--file", lab_config_file, "restart"])
+        command = get_docker_compose_command(
+            ["--file", lab_config_file, "-p", labname, "restart"]
+        )
         subprocess.run(
             command,
             check=True,
@@ -181,6 +214,8 @@ def stop(
         try:
             command = get_docker_compose_command(
                 [
+                    "-p",
+                    labname,
                     "--file",
                     lab_config_file,
                     "down",
@@ -188,6 +223,7 @@ def stop(
                     "--volumes",
                 ],
             )
+            print(command)
             subprocess.run(
                 command,
                 check=True,
@@ -226,6 +262,8 @@ def remove(
         try:
             command = get_docker_compose_command(
                 [
+                    "-p",
+                    labname,
                     "--file",
                     lab_config_file,
                     "down",
