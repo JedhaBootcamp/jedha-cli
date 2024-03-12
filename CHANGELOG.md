@@ -1,3 +1,11 @@
+<a id='changelog-1.1.1'></a>
+
+# 1.1.1 — 2024-03-12
+
+## Fixed
+
+- Fix a bug that cause crash because the docker compose command is not well formatted.
+
 <a id='changelog-1.1.0'></a>
 
 # 1.1.0 — 2024-03-12
