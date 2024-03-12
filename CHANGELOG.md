@@ -1,3 +1,11 @@
+<a id='changelog-1.1.2'></a>
+
+# 1.1.2 — 2024-03-12
+
+## Fixed
+
+- While checking the running labs we compare to the known labs to avoid blocking situations if anoter docker compose project is running.
+
 <a id='changelog-1.1.1'></a>
 
 # 1.1.1 — 2024-03-12

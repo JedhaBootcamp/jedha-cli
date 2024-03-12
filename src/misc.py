@@ -7,6 +7,13 @@ import sys
 import pkg_resources
 import typer
 from rich import print
+from yaml import load
+
+try:
+    from yaml import CLoader as Loader
+except ImportError:
+    from yaml import Loader
+
 
 PACKAGE_NAME = "jedha-cli"
 
@@ -155,6 +162,13 @@ def get_docker_compose_command(args: List[str]) -> List[str]:
     return args
 
 
+def get_yaml_labs() -> list[dict]:
+    labs_yaml_file = pkg_resources.resource_filename("src", "labs.yaml")
+    with open(labs_yaml_file, "r") as f:
+        filename_array = load(f, Loader=Loader)
+    return filename_array
+
+
 def get_running_labs() -> set[str]:
     """
     Get the list of running labs.
@@ -170,7 +184,12 @@ def get_running_labs() -> set[str]:
         text=True,
     )
     lines = result.stdout.splitlines()
-    return set(line.split()[0] for line in lines[1:])
+    running_labs = set(line.split()[0] for line in lines[1:])
+    yaml_labs = get_yaml_labs()
+    all_labs_names = [lab["name"] for lab in yaml_labs]
+    all_labs = set(all_labs_names)
+
+    return running_labs & all_labs
 
 
 def is_lab_already_running(verbose: bool = True) -> bool:

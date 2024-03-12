@@ -4,17 +4,12 @@ import os
 import subprocess
 from typing import Annotated, Optional
 
-import pkg_resources
 import typer
 from rich import print
 from rich.console import Console
 from rich.table import Table
-from yaml import load, safe_load
+from yaml import safe_load
 
-try:
-    from yaml import CLoader as Loader
-except ImportError:
-    from yaml import Loader
 
 from .misc import (
     get_docker_compose_command,
@@ -22,6 +17,7 @@ from .misc import (
     check_for_updates,
     get_running_labs,
     is_lab_already_running,
+    get_yaml_labs,
 )
 
 app = typer.Typer(
@@ -64,10 +60,7 @@ def list():
     """
     List all the labs available.
     """
-    labs_yaml_file = pkg_resources.resource_filename("src", "labs.yaml")
-    with open(labs_yaml_file, "r") as f:
-        filename_array = load(f, Loader=Loader)
-
+    filename_array = get_yaml_labs()
     table = Table("Name", "IP", "Description", show_lines=True, title="Available Labs")
     for i in filename_array:
         table.add_row(i["name"], i["ip"], i["description"])
