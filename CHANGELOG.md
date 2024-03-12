@@ -1,3 +1,18 @@
+<a id='changelog-1.1.0'></a>
+
+# 1.1.0 — 2024-03-12
+
+## Changed
+
+- Changed status command output to display limited information (we avoid giving too many clues). It manages three states: running, stopped, and errors.
+- Status command now does not necesarily require an lab name argument. If no lab name is provided, the status command will display the list of all running. Otherwise it will display the status of the lab with the provided name.
+- Start command now check if a lab is already running before starting it. If a lab is already running, the start command will return.
+
+## Fixed
+
+- Fix start command that used to run the subsystem command twice resulting in error because the subsystem was already running.
+- Add timeout to the version check function to avoid hanging the process when the version check fails.
+
 <a id='changelog-1.0.4'></a>
 
 # 1.0.4 — 2024-02-22
