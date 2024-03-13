@@ -1,3 +1,11 @@
+<a id='changelog-1.1.3'></a>
+
+# 1.1.3 — 2024-03-13
+
+## Added
+
+- Check if Docker is running on all commands that require it.
+
 <a id='changelog-1.1.2'></a>
 
 # 1.1.2 — 2024-03-12
