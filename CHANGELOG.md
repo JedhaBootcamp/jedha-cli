@@ -1,3 +1,11 @@
+<a id='changelog-1.1.5'></a>
+
+# 1.1.5 — 2024-03-13
+
+## Fixed
+
+- Better docker compose command check: it uses `ls` instead of `ps`.
+
 <a id='changelog-1.1.4'></a>
 
 # 1.1.4 — 2024-03-13

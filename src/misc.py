@@ -169,7 +169,7 @@ def is_docker_running() -> bool:
     Returns:
         bool: True if Docker is running, False otherwise.
     """
-    command = get_docker_compose_command(["ps"])
+    command = get_docker_compose_command(["ls"])
     return run_command(command)
 
 

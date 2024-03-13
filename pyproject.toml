@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jedha-cli"
-version = "1.1.4"
+version = "1.1.5"
 description = "A CLI to start cybersecurity labs and practice your skills"
 authors = ["ademenet <alain@jedha.co>"]
 readme = "README.md"
