@@ -169,7 +169,8 @@ def is_docker_running() -> bool:
     Returns:
         bool: True if Docker is running, False otherwise.
     """
-    return run_command(["docker", "info"])
+    command = get_docker_compose_command(["ps"])
+    return run_command(command)
 
 
 def get_yaml_labs() -> list[dict]:

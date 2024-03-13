@@ -1,3 +1,11 @@
+<a id='changelog-1.1.4'></a>
+
+# 1.1.4 — 2024-03-13
+
+## Fixed
+
+- Sudo-fication of the is docker running check.
+
 <a id='changelog-1.1.3'></a>
 
 # 1.1.3 — 2024-03-13
