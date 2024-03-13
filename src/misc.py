@@ -162,6 +162,16 @@ def get_docker_compose_command(args: List[str]) -> List[str]:
     return args
 
 
+def is_docker_running() -> bool:
+    """
+    Check if Docker is running.
+
+    Returns:
+        bool: True if Docker is running, False otherwise.
+    """
+    return run_command(["docker", "info"])
+
+
 def get_yaml_labs() -> list[dict]:
     labs_yaml_file = pkg_resources.resource_filename("src", "labs.yaml")
     with open(labs_yaml_file, "r") as f:
@@ -176,20 +186,24 @@ def get_running_labs() -> set[str]:
     Returns:
         set[str]: The list of running labs.
     """
-    command = get_docker_compose_command(["ls"])
-    result = subprocess.run(
-        command,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    lines = result.stdout.splitlines()
-    running_labs = set(line.split()[0] for line in lines[1:])
-    yaml_labs = get_yaml_labs()
-    all_labs_names = [lab["name"] for lab in yaml_labs]
-    all_labs = set(all_labs_names)
+    try:
+        command = get_docker_compose_command(["ls"])
+        result = subprocess.run(
+            command,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        lines = result.stdout.splitlines()
+        running_labs = set(line.split()[0] for line in lines[1:])
+        yaml_labs = get_yaml_labs()
+        all_labs_names = [lab["name"] for lab in yaml_labs]
+        all_labs = set(all_labs_names)
 
-    return running_labs & all_labs
+        return running_labs & all_labs
+    except Exception as e:
+        print("We failed to check on Docker Compose. Is Docker running?")
+        raise typer.Exit(1)
 
 
 def is_lab_already_running(verbose: bool = True) -> bool:

@@ -18,6 +18,7 @@ from .misc import (
     get_running_labs,
     is_lab_already_running,
     get_yaml_labs,
+    is_docker_running,
 )
 
 app = typer.Typer(
@@ -80,6 +81,10 @@ def status(labname: Annotated[Optional[str], typer.Argument()] = None):
     Args:
         labname (Optional[str]): Name of the lab.
     """
+    if not is_docker_running():
+        print("Docker is not running. Please start Docker and try again.")
+        raise typer.Exit(1)
+
     if labname is None:
         running_labs = get_running_labs()
         if running_labs:
@@ -121,9 +126,7 @@ def status(labname: Annotated[Optional[str], typer.Argument()] = None):
             )
 
     except subprocess.CalledProcessError as e:
-        print(
-            f"Failed to show status of lab {labname}: Error with the docker compose file or Docker itself"
-        )
+        print(f"Failed to show status of lab {labname}. Is Docker running?")
 
 
 @app.command("start", help="Start a specific lab environment.")
@@ -134,6 +137,10 @@ def start(labname: str):
     Args:
         labname (str): Name of the lab.
     """
+    if not is_docker_running():
+        print("Docker is not running. Please start Docker and try again.")
+        raise typer.Exit(1)
+
     lab_config_file = get_lab_config_file(labname)
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
@@ -165,6 +172,10 @@ def restart(labname: str):
     Args:
         labname (str): Name of the lab.
     """
+    if not is_docker_running():
+        print("Docker is not running. Please start Docker and try again.")
+        raise typer.Exit(1)
+
     lab_config_file = get_lab_config_file(labname)
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
@@ -198,6 +209,10 @@ def stop(
     Args:
         labname (str): Name of the lab.
     """
+    if not is_docker_running():
+        print("Docker is not running. Please start Docker and try again.")
+        raise typer.Exit(1)
+
     lab_config_file = get_lab_config_file(labname)
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
@@ -245,6 +260,10 @@ def remove(
     Args:
         labname (str): Name of the lab.
     """
+    if not is_docker_running():
+        print("Docker is not running. Please start Docker and try again.")
+        raise typer.Exit(1)
+
     lab_config_file = get_lab_config_file(labname)
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
