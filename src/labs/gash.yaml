@@ -3,11 +3,12 @@ version: "3"
 services:
   gash:
     container_name: gash
-    image: jedha/lab-bypass-login
-    hostname: jedha-bootcamp
+    image: jedha/lab-gash
     networks:
       lab-network:
         ipv4_address: 10.10.3.78
+    ports:
+      - "22"
 
 networks:
   lab-network:

@@ -1,0 +1,11 @@
+# Nmap 7.94SVN scan initiated Mon Mar 18 15:22:37 2024 as: nmap -sV -O -Pn -p- -oN scan-nmap.txt 10.10.3.78
+Nmap scan report for 10.10.3.78
+Host is up (0.000052s latency).
+All 65535 scanned ports on 10.10.3.78 are in ignored states.
+Not shown: 65535 closed tcp ports (reset)
+MAC Address: 02:42:0A:0A:03:4E (Unknown)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Mar 18 15:22:40 2024 -- 1 IP address (1 host up) scanned in 3.21 seconds
