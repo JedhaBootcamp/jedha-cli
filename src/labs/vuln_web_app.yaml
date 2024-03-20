@@ -3,10 +3,10 @@ version: "3"
 services:
   gash:
     container_name: gash
-    image: jedha/lab-vim
+    image: jedha/lab-vuln_web_app
     networks:
       lab-network:
-        ipv4_address: 10.10.3.81
+        ipv4_address: 10.10.3.82
     ports:
       - "22"
 

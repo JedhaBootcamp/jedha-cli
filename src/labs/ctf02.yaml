@@ -3,7 +3,7 @@ version: "3"
 services:
   gash:
     container_name: gash
-    image: jedha/lab-gash
+    image: jedha/lab-ctf02
     networks:
       lab-network:
         ipv4_address: 10.10.3.80
