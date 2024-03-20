@@ -68,6 +68,35 @@ def list():
     console.print(table)
 
 
+@app.command("dl", help="Download (but not start) a specific lab environment.")
+def download(labname: str):
+    """
+    Download a lab.
+
+    Args:
+        labname (str): Name of the lab.
+    """
+    if not is_docker_running():
+        print("Docker is not running. Please start Docker and try again.")
+        raise typer.Exit(1)
+
+    lab_config_file = get_lab_config_file(labname)
+    print(lab_config_file)
+    if not lab_config_file or not os.path.exists(lab_config_file):
+        print("Docker Compose file not found for the specified lab.")
+        return
+
+    try:
+        command = get_docker_compose_command(["--file", lab_config_file, "pull"])
+        subprocess.run(
+            command,
+            check=True,
+        )
+        print(f"Lab {labname} downloaded successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Failed to download lab {labname}.")
+
+
 @app.command(
     "status",
     help="Show the running labs. If a lab name is provided, it will show the status of that lab.",
