@@ -68,6 +68,22 @@ def list():
     console.print(table)
 
 
+@app.command("doctor", help="Try to diagnose and fix common issues.")
+def doctor():
+    """
+    Try to diagnose and fix common issues.
+    """
+    if not is_docker_running():
+        print("Docker is not running. Please start Docker and try again.")
+        raise typer.Exit(1)
+    try:
+        # Detect if network issues
+        command = get_docker_compose_command([])
+        result = subprocess.run(command, check=True, capture_output=True, text=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Failed to show status of lab {labname}. Is Docker running?")
+
+
 @app.command(
     "status",
     help="Show the running labs. If a lab name is provided, it will show the status of that lab.",
