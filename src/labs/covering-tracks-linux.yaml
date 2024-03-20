@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  covering-tracks-linux:
+    container_name: covering-tracks-linux
+    image: jedha/lab-covering-tracks-linux
+    networks:
+      lab-network:
+        ipv4_address: 10.10.5.21
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.5.0/24
