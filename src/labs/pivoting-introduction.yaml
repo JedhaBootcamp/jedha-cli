@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  pivoting-introduction:
+    image: jedha/lab-pivoting-introduction
+    container_name: pivoting-introduction
+    networks:
+      lab-network:
+        ipv4_address: 10.10.5.91
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.5.0/24

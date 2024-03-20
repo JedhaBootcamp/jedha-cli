@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  covering-tracks-1:
+    container_name: covering-tracks-1
+    image: jedha/lab-covering-tracks-1
+    networks:
+      lab-network:
+        ipv4_address: 10.10.5.24
+      covering-tracks-network:
+        ipv4_address: 10.12.0.64
+
+  covering-tracks-2:
+    container_name: covering-tracks-2
+    image: jedha/lab-covering-tracks-2
+    networks:
+      covering-tracks-network:
+        ipv4_address: 10.12.0.50
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.5.0/24
+
+  covering-tracks-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.12.0.0/24
