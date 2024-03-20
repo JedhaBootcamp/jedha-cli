@@ -82,3 +82,6 @@
 - name: wifi_wpa2_cracking
   ip: "10.10.3.47"
   description: '(username: "exploit", password: "aircrack")'
+- name: gash
+  ip: "10.10.3.78"
+  description: 'GameShell: a "game" to teach the Unix shell'
