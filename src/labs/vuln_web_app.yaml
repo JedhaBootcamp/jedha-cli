@@ -2,7 +2,7 @@ version: "3"
 
 services:
   gash:
-    container_name: gash
+    container_name: vuln_web_app
     image: jedha/lab-vuln_web_app
     networks:
       lab-network:

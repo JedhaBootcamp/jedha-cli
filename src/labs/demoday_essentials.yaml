@@ -2,11 +2,11 @@ version: "3"
 
 services:
   gash:
-    container_name: ctf01
-    image: jedha/lab-ctf01
+    container_name: demoday
+    image: jedha/demoday_essentials
     networks:
       lab-network:
-        ipv4_address: 10.10.3.79
+        ipv4_address: 10.10.3.83
     ports:
       - "22"
 

@@ -2,7 +2,7 @@ version: "3"
 
 services:
   gash:
-    container_name: gash
+    container_name: ctf02
     image: jedha/lab-ctf02
     networks:
       lab-network:
