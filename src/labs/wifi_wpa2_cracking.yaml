@@ -5,6 +5,8 @@ services:
     container_name: aircrack
     image: jedha/lab-aircrack
     hostname: wifi-pineapple
+    ports:
+      - "${WIFI_WPA2_CRACKING_SSH_PORT}:22"
     networks:
       lab-network:
         ipv4_address: 10.10.3.47
