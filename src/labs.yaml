@@ -103,7 +103,7 @@
 - name: backdoor
   ip: "10.10.10.7"
   description: "Backdoor: a backdoor vulnerability (LoL)"
-- name: vuln-web-app
+- name: vuln_web_app
   ip: "10.10.10.8"
   description: "Vulnerable Web App to practice SQL injection (connect to http://10.10.10.8:31337)"
 - name: little_big_ctf
