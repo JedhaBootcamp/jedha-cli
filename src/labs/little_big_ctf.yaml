@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  little_big_ctf:
+    container_name: little_big_ctf
+    image: jedha/lab-little-big-lab
+    ports:
+      - "80:80"
+      - "1337:8081"
+      - "3306:3306"
+      - "21:21"
+      - "20:20"
+      - "22:22"
+      - "21100-21110:21100-21110"
+    networks:
+      lab-network:
+        ipv4_address: 10.10.10.83
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.10.0/24

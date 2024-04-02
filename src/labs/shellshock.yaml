@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  shellshock:
+    container_name: shellshock
+    image: jedha/lab-shellshock
+    networks:
+      lab-network:
+        ipv4_address: 10.10.10.5
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.10.0/24
