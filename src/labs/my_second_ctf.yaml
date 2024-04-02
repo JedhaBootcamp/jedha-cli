@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  my_second_ctf:
+    container_name: my_second_ctf
+    image: jedha/lab-my-second-ctf
+    networks:
+      lab-network:
+        ipv4_address: 10.10.10.13
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.10.0/24
