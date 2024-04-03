@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  sambacry:
+    container_name: sambacry
+    image: jedha/lab-sambacry
+    networks:
+      lab-network:
+        ipv4_address: 10.10.10.6
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.10.0/24

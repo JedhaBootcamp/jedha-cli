@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  backdoor:
+    container_name: backdoor
+    image: jedha/lab-backdoor
+    networks:
+      lab-network:
+        ipv4_address: 10.10.10.7
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.10.0/24
