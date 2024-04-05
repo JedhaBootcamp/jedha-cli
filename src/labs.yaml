@@ -85,7 +85,7 @@
 - name: pivoting-introduction
   ip: "10.10.5.91"
   description: "A gentle introduction to pivoting!"
-- name: reverse-shell
+- name: reverse
   ip: "10.10.5.10"
   description: "Can you get a reverse shell?"
 - name: pivoting
