@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  vuln_web_app:
+    image: jedha/lab-vuln-web-app
+    container_name: vuln_web_app
+    hostname: "vuln-web-app"
+    environment:
+      MYSQL_USER: "jedha"
+      MYSQL_HOST: "10.10.10.100"
+      MYSQL_PASSWORD: "mkiFDUAWqVbSFFk23nK"
+      MYSQL_DATABASE: "EvilCorp"
+    depends_on:
+      - mysql_db
+    ports:
+      - 31337:31337
+    networks:
+      app_net:
+        ipv4_address: 10.10.10.8
+
+  mysql_db:
+    container_name: "jedha-mysql"
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_USER: "jedha"
+      MYSQL_PASSWORD: "mkiFDUAWqVbSFFk23nK"
+      MYSQL_ROOT_PASSWORD: "mkiFDUAWqVbSFFk23nK"
+      MYSQL_DATABASE: "EvilCorp"
+    ports:
+      - 3306:3306
+    volumes:
+      - jedha-database:/var/lib/mysql
+      - ./db/conf.d/:/etc/mysql/conf.d
+    networks:
+      app_net:
+        ipv4_address: 10.10.10.100
+
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.10.0/24
+
+volumes:
+  jedha-database:

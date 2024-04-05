@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  vim_fu:
+    container_name: vim_fu
+    image: jedha/lab-vim-fu
+    networks:
+      lab-network:
+        ipv4_address: 10.10.10.12
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.10.0/24

@@ -2,7 +2,7 @@
 
 import os
 import subprocess
-from typing import Annotated, Optional
+from typing import Annotated, Optional, List
 
 import typer
 from rich import print
@@ -66,6 +66,35 @@ def list():
     for i in filename_array:
         table.add_row(i["name"], i["ip"], i["description"])
     console.print(table)
+
+
+@app.command("dl", help="Download (but not start) one or more lab(s) environment.")
+def download(labnames: List[str]):
+    """
+    Download a lab.
+
+    Args:
+        labnames (List[str]): List of the lab names.
+    """
+    if not is_docker_running():
+        print("Docker is not running. Please start Docker and try again.")
+        raise typer.Exit(1)
+
+    for labname in labnames:
+        lab_config_file = get_lab_config_file(labname)
+        if not lab_config_file or not os.path.exists(lab_config_file):
+            print("Docker Compose file not found for the specified lab.")
+            return
+
+        try:
+            command = get_docker_compose_command(["--file", lab_config_file, "pull"])
+            subprocess.run(
+                command,
+                check=True,
+            )
+            print(f"Lab {labname} downloaded successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to download lab {labname}.")
 
 
 @app.command(

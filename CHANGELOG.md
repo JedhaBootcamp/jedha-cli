@@ -1,3 +1,11 @@
+<a id='changelog-1.1.6'></a>
+
+# 1.1.6 — 2024-04-02
+
+## Added
+
+- Add 8 new labs for beginners.
+
 <a id='changelog-1.1.5'></a>
 
 # 1.1.5 — 2024-03-13
