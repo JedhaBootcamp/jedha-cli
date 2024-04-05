@@ -1,3 +1,12 @@
+<a id='changelog-1.2.0'></a>
+
+# 1.2.0 — 2024-04-05
+
+## Added
+
+- New `dl` command to download a lab without starting it. It solves some issues users may encounter if the download speed is too slow.
+- New labs for stealth techniques.
+
 <a id='changelog-1.1.6'></a>
 
 # 1.1.6 — 2024-04-02
