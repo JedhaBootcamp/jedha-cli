@@ -1,3 +1,18 @@
+- name: ftp_server
+  ip: "10.10.1.13"
+  description: What is FTP?
+- name: smb_server
+  ip: "10.10.1.14"
+  description: What is SMB?
+- name: nfs_server
+  ip: "10.10.1.15"
+  description: What is NFS?
+- name: echo_server
+  ip: "10.10.1.11"
+  description: "A simple echo server to practice with netcat!"
+- name: proxmark
+  ip: "10.10.8.2"
+  description: 'Analyze RFID! (username: "iceman", password: "nfc2022")'
 - name: msf_1
   ip: "10.10.3.12"
   description: Will you be able to get a Remote Command Execution using Metasploit?

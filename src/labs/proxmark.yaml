@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  proxmark:
+    container_name: proxmark
+    image: jedha/lab-proxmark
+    networks:
+      lab-network:
+        ipv4_address: 10.10.8.2
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.8.0/24

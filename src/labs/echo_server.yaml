@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  echo-server:
+    container_name: echo-server
+    image: jedha/lab-echo-server
+    networks:
+      lab-network:
+        ipv4_address: 10.10.1.11
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.1.0/24

@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  smb-server:
+    container_name: smb-server
+    image: jedha/lab-smb-server
+    tty: true
+    expose:
+      - "139"
+      - "445"
+    networks:
+      lab-network:
+        ipv4_address: 10.10.1.14
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.1.0/24

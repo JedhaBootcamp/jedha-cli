@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  ftp-server:
+    container_name: ftp-server
+    image: jedha/lab-ftp-server
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    environment:
+      PUBLICHOST: "localhost"
+      FTP_USER_NAME: moriarty
+      FTP_USER_PASS: M0ri4rtY
+      FTP_USER_HOME: /home/username
+    networks:
+      lab-network:
+        ipv4_address: 10.10.1.13
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.1.0/24
