@@ -1,3 +1,11 @@
+<a id='changelog-1.2.1'></a>
+
+# 1.2.1 — 2024-04-12
+
+## Added
+
+- 5 basic labs to learn protocols.
+
 <a id='changelog-1.2.0'></a>
 
 # 1.2.0 — 2024-04-05
