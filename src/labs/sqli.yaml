@@ -23,8 +23,6 @@ services:
       MYSQL_ROOT_PASSWORD: XCG45DzjNCWzjC3QAynDQtaoVqCe
       MYSQL_USER: jedha
       MYSQL_PASSWORD: XCG45DzjNCWzjC3QAynDQtaoVqCe
-    ports:
-      - "${SQLI_MYSQL_PORT}:3306"
     networks:
       sqli-network:
 
