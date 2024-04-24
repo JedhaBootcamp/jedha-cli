@@ -3,8 +3,13 @@ version: "3"
 services:
   smb-server:
     container_name: smb-server
-    image: jedha/lab-smb-server
+    image: vimagick/samba
+    volumes:
+      - ./samba_server/smb.conf:/etc/samba/smb.conf
+      - ./samba_server/share:/share
     tty: true
+    command: >
+      sh -c "(echo 's4mbAl3l3'; echo 's4mbAl3l3';) | smbpasswd -a root"
     expose:
       - "139"
       - "445"
