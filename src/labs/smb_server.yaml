@@ -5,8 +5,8 @@ services:
     container_name: smb-server
     image: vimagick/samba
     volumes:
-      - ./samba_server/smb.conf:/etc/samba/smb.conf
-      - ./samba_server/share:/share
+      - ./smb_server/smb.conf:/etc/samba/smb.conf
+      - ./smb_server/share:/share
     tty: true
     command: >
       sh -c "(echo 's4mbAl3l3'; echo 's4mbAl3l3';) | smbpasswd -a root"
