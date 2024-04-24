@@ -14,7 +14,7 @@ services:
     volumes:
       - ./nfs_server/YOUNEVERGOTME:/YOUNEVERGOTME
     networks:
-      default:
+      lab-network:
         ipv4_address: 10.10.1.15
 
 networks:
