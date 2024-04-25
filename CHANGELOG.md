@@ -1,3 +1,11 @@
+<a id='changelog-1.2.2'></a>
+
+# 1.2.2 — 2024-04-25
+
+## Fixed
+
+- Fix NFS lab.
+
 <a id='changelog-1.2.1'></a>
 
 # 1.2.1 — 2024-04-12
