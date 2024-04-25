@@ -3,13 +3,16 @@ version: "3"
 services:
   nfs-server:
     container_name: nfs-server
-    image: jedha/lab-nfs-server
+    image: itsthenetwork/nfs-server-alpine:12
+    restart: always
     privileged: true
     environment:
       - SHARED_DIRECTORY=/YOUNEVERGOTME
     expose:
       - "2049"
       - "111"
+    volumes:
+      - ./nfs_server/YOUNEVERGOTME:/YOUNEVERGOTME
     networks:
       lab-network:
         ipv4_address: 10.10.1.15
