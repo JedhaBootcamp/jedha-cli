@@ -1,0 +1,57 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    networks:
+      lab-network:
+        ipv4_address: 10.10.1.16
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    restart: always
+    environment: &env
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_CONFIG_EXTRA: |
+        define( 'AUTOMATIC_UPDATER_DISABLED', true );
+        define( 'FS_METHOD', 'direct' );
+    volumes:
+      - &html ./wordpress_server:/var/www/html
+    labels: &lab
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.frontend.rule=Host:subdomain.domain.com"
+    networks:
+      lab-network:
+        ipv4_address: 10.10.1.17
+
+  wordpress-cli:
+    image: wordpress:cli
+    depends_on:
+      - db
+      - wordpress
+    environment:
+      <<: *env
+    volumes:
+      - *html
+    entrypoint: sh
+    command: -c 'sleep 10; wp core install --url="http://10.10.1.17/" --title="Jedha Hydra Lab" --admin_name=admin --admin_password="whiterose" --admin_email=program@jedha.co; wp plugin install classic-editor --activate'
+
+networks:
+  lab-network:
+    ipam:
+      config:
+        - subnet: 10.10.1.0/24

@@ -1,3 +1,6 @@
+- name: echo_server
+  ip: "10.10.1.11"
+  description: "A simple echo server to practice with netcat!"
 - name: ftp_server
   ip: "10.10.1.13"
   description: What is FTP?
@@ -7,9 +10,9 @@
 - name: nfs_server
   ip: "10.10.1.15"
   description: What is NFS?
-- name: echo_server
-  ip: "10.10.1.11"
-  description: "A simple echo server to practice with netcat!"
+- name: wordpress
+  ip: "10.10.1.17"
+  description: "A WordPress instance to practice hydra. Look at http://10.10.1.17."
 - name: proxmark
   ip: "10.10.8.2"
   description: 'Analyze RFID! (username: "iceman", password: "nfc2022")'
