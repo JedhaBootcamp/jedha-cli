@@ -4,8 +4,8 @@ services:
   sudo:
     container_name: sudo
     image: jedha/lab-sudo
-    expose:
-      - 22
+    ports:
+      - "${SUDO1_PORT}:22"
     networks:
       lab-network:
         ipv4_address: 10.10.3.33

@@ -8,6 +8,9 @@ services:
     image: jedha/lab-dns-zone-transfer
     container_name: dns-zone-transfer
     hostname: jedha-dns-lab1
+    ports:
+      - "${DNS_ZONE_TRANSFER_DNS_PORT}:53"
+      - "${DNS_ZONE_TRANSFER_DNS_PORT}:53/udp"
     environment:
       - CONFIG=allowtransfer
     networks:

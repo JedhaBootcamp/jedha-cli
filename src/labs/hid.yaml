@@ -5,6 +5,9 @@ services:
     container_name: bluetooth-bettercap
     image: jedha/lab-bluetooth-bettercap
     hostname: bettercap
+    ports:
+      - "${HID_BETTERCAP_UI_PORT}:80"
+      - "${HID_BETTERCAP_API_PORT}:8081"
     networks:
       lab-network:
         ipv4_address: 10.10.3.38
