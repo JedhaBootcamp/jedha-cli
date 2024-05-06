@@ -1,3 +1,15 @@
+<a id='changelog-1.2.3'></a>
+
+# 1.2.3 — 2024-05-06
+
+## Changed
+
+- Splitted the `vulnerable_and_outdated_software` lab into three separate labs: `cms_dragon`, `golden_club` and `jwt_integrity`.
+
+## Fixed
+
+- CMS Dragon: fixed the database connection issue that was preventing the CMS from starting.
+
 <a id='changelog-1.2.2'></a>
 
 # 1.2.2 — 2024-04-25
