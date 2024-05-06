@@ -52,9 +52,15 @@
 - name: security_misconfiguration
   ip: "10.10.3.23"
   description: A misconfiguration has been found. Can you exploit it?
-- name: vulnerable_and_outdated_software
-  ip: ""
-  description: Find as many flags as you can!
+- name: "cms_dragon"
+  ip: "10.10.3.24"
+  description: "A vulnerable CMS."
+- name: "golden_club"
+  ip: "10.10.3.25"
+  description: "A vulnerable web application."
+- name: "jwt_integrity"
+  ip: "10.10.3.26"
+  description: "A JWT vulnerable web application."
 - name: linux_privesc
   ip: "10.10.3.27"
   description: Escalate your privileges to root! You can start with "ssh Creed@10.10.3.27" and "Mescaline".

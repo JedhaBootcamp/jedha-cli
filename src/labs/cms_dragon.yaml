@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  cms-dragon:
+    container_name: cms-dragon
+    image: drupal:7.57
+    volumes:
+      - ./cms-dragon/html/sites/:/var/www/html/sites
+      - ./cms-dragon/html/themes:/var/www/html/themes
+    expose:
+      - 80
+    environment:
+      POSTGRES_PASSWORD: "48h9qErrWqpCMB5pzeC8LCDEFrNH"
+      LOCAL_SITES_FOLDER: "/var/www/html/sites"
+    networks:
+      cms-dragon-network:
+      lab-network:
+        ipv4_address: 10.10.3.24
+
+  cms-dragon-db:
+    container_name: cms-dragon-db
+    image: postgres:10.5
+    environment:
+      POSTGRES_PASSWORD: "48h9qErrWqpCMB5pzeC8LCDEFrNH"
+    expose:
+      - 5432
+    volumes:
+      - ./cms-dragon/dump.db:/docker-entrypoint-initdb.d/dump.sql
+      - ./cms-dragon-db-volume:/var/lib/postgresql/data
+    networks:
+      cms-dragon-network:
+
+networks:
+  cms-dragon-network:
+    driver: bridge
+
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.3.0/24
