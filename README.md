@@ -11,21 +11,20 @@ You can launch our labs directly from your terminal.
 - Docker Compose
 - AMD64 CPU (preferably, otherwise some labs may not work)
 
-This CLI is build to be used on [Kali Linux](https://www.kali.org/) priorly. It may work on other Linux distributions, but we don't support them. Also it may work on Windows and MacOS but we don't support them either.
+**This CLI is build to be used on [Kali Linux](https://www.kali.org/) priorly** and AMD64 architecture.
+
+It may work on other Linux distributions, but we don't support them. Also it may work on Windows and MacOS but we don't support them either.
 
 ## Installation
 
-Be sure you meet all the requirements before installing the CLI. Then:
+Be sure you meet all the requirements before installing the CLI. Then use [`pipx`](https://github.com/pypa/pipx):
 
 ```bash
-pip install jedha-cli
+pipx install jedha-cli
+pipx ensurepath
 ```
 
-Sometimes you may need to add it to the `PATH` variable. You can do it by adding the following line to your `.bashrc` or `.zshrc`:
-
-```bash
-export PATH="/home/kali/.local/bin:$PATH"
-```
+You are good to go!
 
 ## Usage
 
