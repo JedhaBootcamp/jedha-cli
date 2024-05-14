@@ -8,11 +8,11 @@ services:
     privileged: true
     mac_address: 9c:b6:d0:9f:12:cc
     networks:
-      lab-inner-network:
+      lab-network:
         ipv4_address: 10.10.200.12
 
 networks:
-  lab-inner-network:
+  lab-network:
     driver: bridge
     ipam:
       config:

@@ -15,7 +15,7 @@ services:
     ports:
       - 31337:31337
     networks:
-      app_net:
+      lab-network:
         ipv4_address: 10.10.10.8
 
   mysql_db:
@@ -33,11 +33,11 @@ services:
       - jedha-database:/var/lib/mysql
       - ./db/conf.d/:/etc/mysql/conf.d
     networks:
-      app_net:
+      lab-network:
         ipv4_address: 10.10.10.100
 
 networks:
-  app_net:
+  lab-network:
     driver: bridge
     ipam:
       driver: default
