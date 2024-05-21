@@ -1,3 +1,11 @@
+<a id='changelog-1.2.5'></a>
+
+# 1.2.5 — 2024-05-21
+
+## Fixed
+
+- `cms_dragon` DB do not need `cms-dragon-db-volume`.
+
 <a id='changelog-1.2.4'></a>
 
 # 1.2.4 — 2024-05-21
