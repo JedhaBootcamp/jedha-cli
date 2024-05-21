@@ -1,3 +1,15 @@
+<a id='changelog-1.2.4'></a>
+
+# 1.2.4 — 2024-05-21
+
+## Changed
+
+- Use same lab network name for every labs.
+
+## Fixed
+
+- Include missing folders for `cms_dragon` lab.
+
 <a id='changelog-1.2.3'></a>
 
 # 1.2.3 — 2024-05-06
