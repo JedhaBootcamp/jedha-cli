@@ -1,3 +1,11 @@
+<a id='changelog-1.2.6'></a>
+
+# 1.2.6 — 2024-05-23
+
+## Changed
+
+- Add flag to CMS Dragon lab.
+
 <a id='changelog-1.2.5'></a>
 
 # 1.2.5 — 2024-05-21
