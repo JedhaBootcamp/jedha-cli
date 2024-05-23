@@ -7,6 +7,7 @@ services:
     volumes:
       - ./cms-dragon/html/sites/:/var/www/html/sites
       - ./cms-dragon/html/themes:/var/www/html/themes
+      - ./cms-dragon/html/flag_to_get.txt:/flag_to_get.txt
     expose:
       - 80
     environment:
