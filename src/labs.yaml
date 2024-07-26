@@ -145,3 +145,6 @@
 - name: little_big_ctf
   ip: "10.10.10.83"
   description: "Can you find a way to become root?"
+- name: user_management
+  ip: "11.10.10.12"
+  description: "Play with users, groups and permissions"
