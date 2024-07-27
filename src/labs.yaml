@@ -148,3 +148,6 @@
 - name: user_management
   ip: "11.10.10.12"
   description: "Play with users, groups and permissions"
+- name: processes
+  ip: "11.10.10.13"
+  description: "Manage processes to optimize resources"
