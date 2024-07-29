@@ -127,9 +127,9 @@
 - name: vim_fu
   ip: "10.10.10.12"
   description: 'Practice your Vim Fu! (username: "root", password: "password")'
-- name: my_second_ctf
+- name: cron-and-more
   ip: "10.10.10.13"
-  description: 'Ready for round 2? (username: "root", password: "password")'
+  description: 'Practice CRON Jobs and more bash commands (username: "root", password: "password")'
 - name: sambacry
   ip: "10.10.10.5"
   description: "SamBaCry: a Samba vulnerability"
