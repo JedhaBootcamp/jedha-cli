@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  user_management:
+    container_name: permissions
+    image: jedha/ess-m01d02-ctf-1
+    networks:
+      lab-network:
+        ipv4_address: 11.10.10.14
+    ports:
+      - "22:22"
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 11.10.10.0/24
