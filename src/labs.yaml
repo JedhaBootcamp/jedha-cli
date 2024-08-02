@@ -154,6 +154,9 @@
 - name: permission-ess-m01d02-ctf-1
   ip: "11.10.10.14"
   description: "Hack into Linux permissions to escalate your privileges"
-- name: permission-ess-m01d02-ctf-2
+- name: cronjobs-ess-m01d02-ctf-2
   ip: "11.10.10.15"
   description: "Leverage Crons and more to escalate privileges"
+- name: osi-i-to-iv
+  ip: "12.0.0.2"
+  description: "basic lab for networking"

@@ -1,0 +1,49 @@
+version: '3'
+services:
+  deviceA:
+    image: jedha/basic-ubuntu-student 
+    container_name: deviceA
+    networks:
+      lab-network:
+        ipv4_address: 12.0.0.2
+    ports:
+      - "2222:22"
+
+  deviceB:
+    image: ubuntu
+    container_name: deviceB
+    command: ["bash", "-c", "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity"]
+    networks:
+      lab-network:
+        ipv4_address: 12.0.0.3
+
+  deviceC:
+    image: ubuntu
+    container_name: deviceC
+    command: ["bash", "-c", "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity"]
+    networks:
+      lab-network:
+        ipv4_address: 12.0.0.4
+
+  router:
+    image: ubuntu
+    container_name: router
+    command: ["bash", "-c", "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity"]
+    networks:
+      lab-network:
+        ipv4_address: 12.0.0.254
+
+  fake_switch:
+    image: ubuntu
+    container_name: fake_switch
+    command: ["bash", "-c", "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity"]
+    networks:
+      lab-network:
+        ipv4_address: 12.0.0.100
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 12.0.0.0/24
