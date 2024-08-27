@@ -127,9 +127,9 @@
 - name: vim_fu
   ip: "10.10.10.12"
   description: 'Practice your Vim Fu! (username: "root", password: "password")'
-- name: my_second_ctf
+- name: cron-and-more
   ip: "10.10.10.13"
-  description: 'Ready for round 2? (username: "root", password: "password")'
+  description: 'Practice CRON Jobs and more bash commands (username: "root", password: "password")'
 - name: sambacry
   ip: "10.10.10.5"
   description: "SamBaCry: a Samba vulnerability"
@@ -145,3 +145,18 @@
 - name: little_big_ctf
   ip: "10.10.10.83"
   description: "Can you find a way to become root?"
+- name: user_management
+  ip: "11.10.10.12"
+  description: "Play with users, groups and permissions"
+- name: processes
+  ip: "11.10.10.13"
+  description: "Manage processes to optimize resources"
+- name: permission-ess-m01d02-ctf-1
+  ip: "11.10.10.14"
+  description: "Hack into Linux permissions to escalate your privileges"
+- name: cronjobs-ess-m01d02-ctf-2
+  ip: "11.10.10.15"
+  description: "Leverage Crons and more to escalate privileges"
+- name: osi-i-to-iv
+  ip: "12.0.0.2"
+  description: "basic lab for networking"

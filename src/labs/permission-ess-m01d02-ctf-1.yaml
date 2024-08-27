@@ -1,12 +1,12 @@
 version: "3"
 
 services:
-  my_first_ctf:
-    container_name: my_first_ctf
-    image: jedha/lab-my-first-ctf
+  user_management:
+    container_name: permissions
+    image: jedha/ess-m01d02-ctf-1
     networks:
       lab-network:
-        ipv4_address: 10.10.10.11
+        ipv4_address: 11.10.10.14
     ports:
       - "22:22"
 
@@ -16,4 +16,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 10.10.10.0/24
+        - subnet: 11.10.10.0/24
