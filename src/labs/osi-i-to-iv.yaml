@@ -1,7 +1,7 @@
-version: '3'
+version: "3"
 services:
   deviceA:
-    image: jedha/basic-ubuntu-student 
+    image: jedha/basic-ubuntu-student
     container_name: deviceA
     networks:
       lab-network:
@@ -12,7 +12,12 @@ services:
   deviceB:
     image: ubuntu
     container_name: deviceB
-    command: ["bash", "-c", "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity"]
+    command:
+      [
+        "bash",
+        "-c",
+        "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity",
+      ]
     networks:
       lab-network:
         ipv4_address: 12.0.0.3
@@ -20,7 +25,12 @@ services:
   deviceC:
     image: ubuntu
     container_name: deviceC
-    command: ["bash", "-c", "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity"]
+    command:
+      [
+        "bash",
+        "-c",
+        "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity",
+      ]
     networks:
       lab-network:
         ipv4_address: 12.0.0.4
@@ -28,7 +38,12 @@ services:
   router:
     image: ubuntu
     container_name: router
-    command: ["bash", "-c", "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity"]
+    command:
+      [
+        "bash",
+        "-c",
+        "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity",
+      ]
     networks:
       lab-network:
         ipv4_address: 12.0.0.254
@@ -36,7 +51,12 @@ services:
   fake_switch:
     image: ubuntu
     container_name: fake_switch
-    command: ["bash", "-c", "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity"]
+    command:
+      [
+        "bash",
+        "-c",
+        "apt-get update && apt-get install -y iputils-ping net-tools && sleep infinity",
+      ]
     networks:
       lab-network:
         ipv4_address: 12.0.0.100
