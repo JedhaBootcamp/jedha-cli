@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  user_management:
+    container_name: weblab
+    image: jedha/lab-weblab
+    networks:
+      lab-network:
+        ipv4_address: 11.10.10.17
+    ports:
+      - "80:80"
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 11.10.10.0/24
