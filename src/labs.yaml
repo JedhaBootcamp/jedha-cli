@@ -121,9 +121,6 @@
 - name: gash
   ip: "10.10.3.78"
   description: 'GameShell: a "game" to teach the Unix shell'
-- name: my_first_ctf
-  ip: "10.10.10.11"
-  description: 'Your first CTF! Can you find the 9 flags? (username: "root", password: "password")'
 - name: vim_fu
   ip: "10.10.10.12"
   description: 'Practice your Vim Fu! (username: "root", password: "password")'
@@ -145,18 +142,33 @@
 - name: little_big_ctf
   ip: "10.10.10.83"
   description: "Can you find a way to become root?"
+- name: my_first_ctf
+  ip: "10.10.10.11"
+  description: 'Your first CTF! Can you find the 9 flags? (username: "root", password: "password")'
 - name: user_management
   ip: "11.10.10.12"
-  description: "Play with users, groups and permissions"
+  description: 'Play with users, groups and permissions (username: "root", password: "NLFkf")'
 - name: processes
   ip: "11.10.10.13"
-  description: "Manage processes to optimize resources"
-- name: permission-ess-m01d02-ctf-1
+  description: 'Manage processes to optimize resources (username: "root", password: "IJs2")'
+- name: cron-and-more
+  ip: "10.10.10.16"
+  description: 'Find the 6 flags (username: "root", password: "password")'
+- name: permission-ctf
   ip: "11.10.10.14"
-  description: "Hack into Linux permissions to escalate your privileges"
-- name: cronjobs-ess-m01d02-ctf-2
+  description: 'Hack into Linux permissions to escalate your privileges (username: "hacker", password: "hacker")'
+- name: cron-jobs
   ip: "11.10.10.15"
-  description: "Leverage Crons and more to escalate privileges"
+  description: 'Leverage Crons and more to escalate privileges (username: "hacker", password: "hacker")'
+- name: nmap_ctf
+  id: "101.10.10.0/24"
+  description: "Can you find the 5 flags?"
+- name: weblab
+  id: "11.10.10.17"
+  description: "Your first web lab!"
+- name: imdb-db
+  id: "11.10.10.18"
+  description: "Your first SQL lab!"
 - name: osi-i-to-iv
   ip: "12.0.0.2"
   description: "basic lab for networking"
