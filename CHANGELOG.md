@@ -1,3 +1,15 @@
+<a id='changelog-1.3.1'></a>
+
+# 1.3.1 — 2024-08-28
+
+## Added
+
+- Add new Essentials program labs.
+
+## Changed
+
+- Rename some Essentials program labs name.
+
 <a id='changelog-1.3.0'></a>
 
 # 1.3.0 — 2024-08-27
