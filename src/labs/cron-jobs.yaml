@@ -2,8 +2,8 @@ version: "3"
 
 services:
   user_management:
-    container_name: cronjobs
-    image: jedha/ess-m01d02-ctf-2
+    container_name: cron-jobs
+    image: jedha/lab-cron-jobs
     networks:
       lab-network:
         ipv4_address: 11.10.10.15
