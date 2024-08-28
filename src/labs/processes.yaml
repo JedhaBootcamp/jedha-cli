@@ -1,7 +1,7 @@
 services:
   processes:
     container_name: processes
-    image: jedha/processes
+    image: jedha/lab-processes
     networks:
       lab-network:
         ipv4_address: 11.10.10.13

@@ -1,0 +1,53 @@
+version: "3"
+services:
+  telnetTarget:
+    container_name: nmap-ctf-telnet-target
+    image: jedha/lab-nmap-ctf-telnet-target
+    networks:
+      nmap_network:
+        ipv4_address: 101.10.10.2
+    ports:
+      - "23:23"
+
+  telnetSource:
+    container_name: nmap-ctf-telnet-source
+    image: jedha/lab-nmap-ctf-telnet-source
+    networks:
+      nmap_network:
+        ipv4_address: 101.10.10.3
+    ports:
+      - "24:23"
+
+  ssh:
+    container_name: nmap-ctf-simple-ssh
+    image: jedha/lab-nmap-ctf-simple-ssh
+    networks:
+      nmap_network:
+        ipv4_address: 101.10.10.4
+    ports:
+      - "22:22"
+
+  ftp:
+    container_name: nmap-ctf-simple-ftp
+    image: jedha/lab-nmap-ctf-simple-ftp
+    networks:
+      nmap_network:
+        ipv4_address: 101.10.10.5
+    ports:
+      - "21:21"
+
+  mysql:
+    container_name: nmap-ctf-simple-mysql
+    image: jedha/lab-nmap-ctf-simple-mysql
+    networks:
+      nmap_network:
+        ipv4_address: 101.10.10.6
+    ports:
+      - "3306:3306"
+
+networks:
+  nmap_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 101.10.10.0/24

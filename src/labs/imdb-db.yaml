@@ -2,13 +2,13 @@ version: "3"
 
 services:
   user_management:
-    container_name: permissions
-    image: jedha/ess-m01d02-ctf-1
+    container_name: imdb-db
+    image: jedha/lab-imdb-db
     networks:
       lab-network:
-        ipv4_address: 11.10.10.14
+        ipv4_address: 11.10.10.18
     ports:
-      - "22:22"
+      - "5432:5432"
 
 networks:
   lab-network:
