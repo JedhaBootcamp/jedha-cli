@@ -2,11 +2,11 @@ version: "3"
 
 services:
   user_management:
-    container_name: user_management
-    image: jedha/lab-user-management
+    container_name: permission-ctf
+    image: jedha/lab-permission-ctf
     networks:
       lab-network:
-        ipv4_address: 11.10.10.12
+        ipv4_address: 11.10.10.14
     ports:
       - "22:22"
 

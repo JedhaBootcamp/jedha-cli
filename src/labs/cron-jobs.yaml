@@ -2,11 +2,11 @@ version: "3"
 
 services:
   user_management:
-    container_name: user_management
-    image: jedha/lab-user-management
+    container_name: cron-jobs
+    image: jedha/lab-cron-jobs
     networks:
       lab-network:
-        ipv4_address: 11.10.10.12
+        ipv4_address: 11.10.10.15
     ports:
       - "22:22"
 

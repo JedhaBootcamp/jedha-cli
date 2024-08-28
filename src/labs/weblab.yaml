@@ -2,13 +2,13 @@ version: "3"
 
 services:
   user_management:
-    container_name: cronjobs
-    image: jedha/ess-m01d02-ctf-2
+    container_name: weblab
+    image: jedha/lab-weblab
     networks:
       lab-network:
-        ipv4_address: 11.10.10.15
+        ipv4_address: 11.10.10.17
     ports:
-      - "22:22"
+      - "80:80"
 
 networks:
   lab-network:

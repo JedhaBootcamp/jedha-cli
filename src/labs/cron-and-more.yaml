@@ -3,10 +3,10 @@ version: "3"
 services:
   my_second_ctf:
     container_name: cron-and-more
-    image: jedha/cron-and-more
+    image: jedha/lab-cron-and-more
     networks:
       lab-network:
-        ipv4_address: 10.10.10.13
+        ipv4_address: 10.10.10.16
 
 networks:
   lab-network:
