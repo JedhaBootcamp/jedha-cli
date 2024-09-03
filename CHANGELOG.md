@@ -1,3 +1,12 @@
+<a id='changelog-1.3.2'></a>
+
+# 1.3.2 — 2024-09-03
+
+## Added
+
+- Clean Docker Network and stop previous containers before starting new ones. Fix the network IP range issue.
+- Simple test to check labs startup.
+
 <a id='changelog-1.3.1'></a>
 
 # 1.3.1 — 2024-08-28
