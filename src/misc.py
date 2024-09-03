@@ -224,3 +224,49 @@ def is_lab_already_running(verbose: bool = True) -> bool:
             )
         return True
     return False
+
+
+def clean_docker_network() -> None:
+    """
+    Clean Docker Network using `prune` to avoid conflicting IP range issues.
+    """
+    try:
+        command = (
+            ["sudo", "docker", "network", "prune", "-f"]
+            if docker_requires_sudo()
+            else ["docker", "network", "prune", "-f"]
+        )
+        subprocess.run(command, check=True)
+        print("🧹 Docker network")
+    except Exception as e:
+        print(f"❌ Error while network pruning: {e}")
+
+
+def cleanup_lab(labname: str, lab_config_file: str) -> None:
+    """
+    Cleanup the lab by removing the containers and networks.
+
+    Args:
+        labname (str): The name of the lab.
+        lab_config_file (str): The path to the lab's Docker Compose configuration.
+    """
+    try:
+        print("🏋️ Cleaning up the lab before starting it.")
+        clean_docker_network()
+        command = get_docker_compose_command(
+            [
+                "-p",
+                labname,
+                "--file",
+                lab_config_file,
+                "down",
+                "--remove-orphans",
+                "--volumes",
+            ],
+        )
+        subprocess.run(
+            command,
+            check=True,
+        )
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Failed to clean lab {labname}.")
