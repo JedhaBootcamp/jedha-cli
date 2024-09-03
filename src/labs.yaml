@@ -161,13 +161,13 @@
   ip: "11.10.10.15"
   description: 'Leverage Crons and more to escalate privileges (username: "hacker", password: "hacker")'
 - name: nmap_ctf
-  id: "101.10.10.0/24"
+  ip: "101.10.10.0/24"
   description: "Can you find the 5 flags?"
 - name: weblab
-  id: "11.10.10.17"
+  ip: "11.10.10.17"
   description: "Your first web lab!"
 - name: imdb-db
-  id: "11.10.10.18"
+  ip: "11.10.10.18"
   description: "Your first SQL lab!"
 - name: osi-i-to-iv
   ip: "12.0.0.2"
