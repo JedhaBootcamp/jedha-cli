@@ -19,6 +19,7 @@ from .misc import (
     is_lab_already_running,
     get_yaml_labs,
     is_docker_running,
+    cleanup_lab,
 )
 
 app = typer.Typer(
@@ -178,6 +179,8 @@ def start(labname: str):
     if is_lab_already_running():
         return
 
+    cleanup_lab(labname, lab_config_file)
+
     try:
         command = get_docker_compose_command(
             ["--file", lab_config_file, "-p", labname, "up", "-d"]
@@ -209,6 +212,8 @@ def restart(labname: str):
     if not lab_config_file or not os.path.exists(lab_config_file):
         print("Docker Compose file not found for the specified lab.")
         return
+
+    cleanup_lab(labname, lab_config_file)
 
     try:
         command = get_docker_compose_command(
