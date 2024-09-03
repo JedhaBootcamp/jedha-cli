@@ -20,6 +20,8 @@ requests = "^2.31.0"
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.6.0"
 scriv = {extras = ["toml"], version = "^1.5.1"}
+pyyaml = "^6.0.2"
+tabulate = "^0.9.0"
 
 [build-system]
 requires = ["poetry-core"]
