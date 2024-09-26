@@ -1,3 +1,11 @@
+<a id='changelog-1.3.3'></a>
+
+# 1.3.3 — 2024-09-26
+
+## Changed
+
+- Fix the Samba Server lab.
+
 <a id='changelog-1.3.2'></a>
 
 # 1.3.2 — 2024-09-03

@@ -1,0 +1,21 @@
+auth:
+  - user: root
+    group: root
+    uid: 0
+    gid: 0
+    password: s4mbAl3l3
+
+global:
+  - "force user = root"
+  - "force group = root"
+  - "log level = 2"
+
+share:
+  - name: share
+    path: /samba/share
+    browsable: yes
+    readonly: no
+    guestok: no
+    validusers: root
+    writelist: root
+    veto: no

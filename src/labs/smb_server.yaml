@@ -1,18 +1,26 @@
 version: "3"
 
 services:
-  smb-server:
+  samba:
+    image: crazymax/samba:latest
     container_name: smb-server
-    image: vimagick/samba
+    environment:
+      - TZ=UTC
+      - SAMBA_LOG_LEVEL=2
+      - WSDD2_ENABLE=1
+      - SAMBA_CONF_LOG_FILE=/dev/stdout
     volumes:
-      - ./smb_server/smb.conf:/etc/samba/smb.conf
-      - ./smb_server/share:/share
-    tty: true
-    command: >
-      sh -c "(echo 's4mbAl3l3'; echo 's4mbAl3l3';) | smbpasswd -a root"
-    expose:
-      - "139"
-      - "445"
+      - ./smb_server/data:/data
+      - ./smb_server/share:/samba/share
+    ports:
+      - "445:445"
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139"
+    restart: unless-stopped
+    cap_add:
+      - CAP_NET_ADMIN
+      - CAP_NET_RAW
     networks:
       lab-network:
         ipv4_address: 10.10.1.14
