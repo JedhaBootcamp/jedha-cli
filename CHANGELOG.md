@@ -1,3 +1,11 @@
+<a id='changelog-1.3.4'></a>
+
+# 1.3.4 — 2024-10-15
+
+## Added
+
+- New lab intro to ethical hacking workshop.
+
 <a id='changelog-1.3.3'></a>
 
 # 1.3.3 — 2024-09-26
