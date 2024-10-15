@@ -172,3 +172,6 @@
 - name: osi-i-to-iv
   ip: "12.0.0.2"
   description: "basic lab for networking"
+- name: intro-to-ethical-hacking-workshop
+  ip: "64.10.11.12"
+  description: "Get familiar with Ethical Hacking!"

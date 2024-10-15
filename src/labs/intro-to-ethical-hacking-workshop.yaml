@@ -1,0 +1,18 @@
+services:
+  lab_intro_to_ethical_hacking:
+    container_name: lab-intro-to-ethical-hacking
+    image: jedha/introduction-to-ethical-hacking-lab
+    networks:
+      lab-network:
+        ipv4_address: 64.10.11.12
+    ports:
+      - "22:22"
+      - "80:80"
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 64.10.11.0/24
