@@ -5,6 +5,8 @@ services:
     container_name: docker-3
     image: jedha/lab-docker-3
     hostname: jedha-vps
+    ports:
+      - "${DOCKER_EVASION_2_SSH_PORT}:2222"
     privileged: true
     mac_address: 9c:b6:d0:10:22:14
     networks:
