@@ -1,3 +1,11 @@
+<a id='changelog-1.3.5'></a>
+
+# 1.3.5 — 2024-12-16
+
+## Fixed
+
+- Fixes a dependency issue `module not found pkg_resources` because Kali no longer comes with setuptools installed by default.
+
 <a id='changelog-1.3.4'></a>
 
 # 1.3.4 — 2024-10-15
