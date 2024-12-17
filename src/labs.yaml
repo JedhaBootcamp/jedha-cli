@@ -175,3 +175,6 @@
 - name: intro-to-ethical-hacking-workshop
   ip: "64.10.11.12"
   description: "Get familiar with Ethical Hacking!"
+- name: ibc-web-app
+  ip: "localhost"
+  description: "IBC Web App. Web app available at http://localhost:1337 and API at http://localhost:1338"
