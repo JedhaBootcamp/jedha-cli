@@ -178,3 +178,6 @@
 - name: ibc-web-app
   ip: "localhost"
   description: "IBC Web App. Web app available at http://localhost:1337 and API at http://localhost:1338"
+- name: ibc-news
+  ip: "http://localhost:4100/"
+  description: "IBC News Website."
