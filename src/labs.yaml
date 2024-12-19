@@ -181,3 +181,6 @@
 - name: ibc-news
   ip: "http://localhost:4100/"
   description: "IBC News Website."
+- name: ibc-ci-cd
+  ip: "http://localhost:<port>/"
+  description: "CI/CD security lab (5min setup time) - Access CTFd(8000,alice:alice), Jenkins(8080,alice:alice), Gitea(3000,thealice:thealice), GitLab(4000,alice:ali12345)"
