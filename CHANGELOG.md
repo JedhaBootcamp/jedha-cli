@@ -1,3 +1,15 @@
+<a id='changelog-1.4.0'></a>
+
+# 1.4.0 — 2025-02-06
+
+## Added
+
+- Add new advanced labs: ibc-web-app, ibc-news and ibc-ci-cd.
+
+## Fixed
+
+- Fixed the labs pentesting_network_services and msf_2.
+
 <a id='changelog-1.3.5'></a>
 
 # 1.3.5 — 2024-12-16
