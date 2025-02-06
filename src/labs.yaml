@@ -175,3 +175,12 @@
 - name: intro-to-ethical-hacking-workshop
   ip: "64.10.11.12"
   description: "Get familiar with Ethical Hacking!"
+- name: ibc-web-app
+  ip: "localhost"
+  description: "IBC Web App. Web app available at http://localhost:1337 and API at http://localhost:1338"
+- name: ibc-news
+  ip: "http://localhost:4100/"
+  description: "IBC News Website."
+- name: ibc-ci-cd
+  ip: "http://localhost:<port>/"
+  description: "CI/CD security lab (5min setup time) - Access CTFd(8000,alice:alice), Jenkins(8080,alice:alice), Gitea(3000,thealice:thealice), GitLab(4000,alice:ali12345)"
